@@ -1,1467 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pivotalcoin</title>
-    <link rel="stylesheet" href="/src/styles/style.css" />
-  </head>
-  <body class="bg-brand flex flex-col items-center font-sans">
-    <header
-      class="
-        text-white
-        leading-loose
-        flex
-        justify-center
-        w-full
-        px-4
-        py-2
-        bg-cover bg-left bg-no-repeat
-        mb-32
-      "
-      style="background-image: url('./image/hero-bg.png')"
-    >
-      <div class="container">
-        <nav class="py-4 flex justify-between items-center">
-          <a href="">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="70"
-              height="70"
-              viewBox="0 0 71 71"
-            >
-              <defs>
-                <pattern
-                  id="pattern"
-                  width="1"
-                  height="1"
-                  viewBox="13.986 13.292 43.028 43.028"
-                >
-                  <image
-                    preserveAspectRatio="xMidYMid slice"
-                    width="71"
-                    height="71"
-                    xlink:href="data:image/jpeg;base64,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"
-                  />
-                </pattern>
-              </defs>
-              <circle
-                id="Ellipse_277"
-                data-name="Ellipse 277"
-                cx="35.5"
-                cy="35.5"
-                r="35.5"
-                fill="url(#pattern)"
-              />
-            </svg>
-          </a>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pivotalcoin</title>
+        <link rel="stylesheet" href="src/styles/style.css" />
+    </head>
+    <body class="bg-brand flex flex-col items-center font-sans">
+        <header class="text-white leading-loose flex justify-center w-full px-4 py-2 bg-cover bg-left bg-no-repeat mb-32" style="background-image: url('./image/hero-bg.png')">
+            <div class="container">
+                <nav class="py-4 flex justify-between items-center">
+                    <a href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="70" height="70" viewBox="0 0 71 71">
+                            <defs>
+                                <pattern id="pattern" width="1" height="1" viewBox="13.986 13.292 43.028 43.028">
+                                    <image
+                                        preserveAspectRatio="xMidYMid slice"
+                                        width="71"
+                                        height="71"
+                                        xlink:href="data:image/jpeg;base64,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"
+                                    />
+                                </pattern>
+                            </defs>
+                            <circle id="Ellipse_277" data-name="Ellipse 277" cx="35.5" cy="35.5" r="35.5" fill="url(#pattern)" />
+                        </svg>
+                    </a>
 
-          <div class="hidden lg:block">
-            <div class="flex flex-row justify-center my-auto space-x-6">
-              <a
-                href="#"
-                class="px-2 font-semibold text-lg hover:text-brand-secondary"
-              >
-                Home
-              </a>
-              <a
-                href="#"
-                class="px-2 font-semibold text-lg hover:text-brand-secondary"
-              >
-                Knowledgebank
-              </a>
-              <a
-                href="#"
-                class="px-2 font-semibold text-lg hover:text-brand-secondary"
-              >
-                Whitepaper
-              </a>
-              <a
-                href="#"
-                class="px-2 font-semibold text-lg hover:text-brand-secondary"
-              >
-                About us
-              </a>
-              <a
-                href="#"
-                class="px-2 font-semibold text-lg hover:text-brand-secondary"
-              >
-                Contact us
-              </a>
+                    <div class="hidden lg:block">
+                        <div class="flex flex-row justify-center my-auto space-x-6">
+                            <a href="index.html" class="px-2 font-semibold text-lg hover:text-brand-secondary"> Home </a>
+                            <a href="#" class="px-2 font-semibold text-lg hover:text-brand-secondary"> Knowledgebank </a>
+                            <a href="whitepaper.html" class="px-2 font-semibold text-lg hover:text-brand-secondary"> Whitepaper </a>
+                            <a href="#" class="px-2 font-semibold text-lg hover:text-brand-secondary"> About us </a>
+                            <a href="contact.html" class="px-2 font-semibold text-lg hover:text-brand-secondary"> Contact us </a>
+                        </div>
+                    </div>
+                    <div class="hidden lg:block">
+                        <a href="#" class="px-12 py-2 text-xl font-semibold bg-white rounded-full text-black"> Support </a>
+                    </div>
+
+                    <button type="button" class="focus:outline-none lg:hidden">
+                        <svg class="h-6 w-6 fill-current text-gray-300 hover:text-gray-100" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+                        </svg>
+                    </button>
+                </nav>
+
+                <div class="flex flex-col items-center">
+                    <div class="max-w-4xl mx-auto my-16 text-center space-y-8 text-white">
+                        <h1 class="text-6xl font-bold leading-normal">JOIN US AND DISCOVER THE FUTURE</h1>
+                        <p class="text-xl font-semibold leading-loose">Our asset based Pivotalcoin will be stable and has several cash inflows this will help the project sail through even when the seas are rough. Come and be one of us.</p>
+                    </div>
+
+                    <div class="w-full">
+                        <div class="grid lg:grid-cols-3 grid-cols-1 gap-8 items-center justify-between text-center">
+                            <a href="" class="border text-lg w-full py-4 rounded-md hover:bg-brand-secondary hover:border-brand-secondary">Getting started with Pivotalcoin</a>
+                            <a href="" class="border text-lg w-full py-4 rounded-md hover:bg-brand-secondary hover:border-brand-secondary">Choose your Pivotalcoin wallet</a>
+                            <a href="" class="border text-lg w-full py-4 rounded-md hover:bg-brand-secondary hover:border-brand-secondary">buy PivotalCoin</a>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <img src="./image/desktop.png" alt="" class="object-cover w-full" />
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="hidden lg:block">
-            <a
-              href="#"
-              class="
-                px-12
-                py-2
-                text-xl
-                font-semibold
-                bg-white
-                rounded-full
-                text-black
-              "
-            >
-              Support
-            </a>
-          </div>
+        </header>
 
-          <button type="button" class="focus:outline-none lg:hidden">
-            <svg
-              class="h-6 w-6 fill-current text-gray-300 hover:text-gray-100"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-              />
-            </svg>
-          </button>
-        </nav>
-
-        <div class="flex flex-col items-center">
-          <div class="max-w-4xl mx-auto my-16 text-center space-y-8 text-white">
-            <h1 class="text-6xl font-bold leading-normal">
-              JOIN US AND DISCOVER THE FUTURE
-            </h1>
-            <p class="text-xl font-semibold leading-loose">
-              Our asset based Pivotalcoin will be stable and has several cash
-              inflows this will help the project sail through even when the seas
-              are rough. Come and be one of us.
-            </p>
-          </div>
-
-          <div class="w-full">
-            <div
-              class="
-                grid
-                lg:grid-cols-3
-                grid-cols-1
-                gap-8
-                items-center
-                justify-between
-                text-center
-              "
-            >
-              <a
-                href=""
-                class="
-                  border
-                  text-lg
-                  w-full
-                  py-4
-                  rounded-md
-                  hover:bg-brand-secondary
-                  hover:border-brand-secondary
-                "
-                >Getting started with Pivotalcoin</a
-              >
-              <a
-                href=""
-                class="
-                  border
-                  text-lg
-                  w-full
-                  py-4
-                  rounded-md
-                  hover:bg-brand-secondary
-                  hover:border-brand-secondary
-                "
-                >Choose your Pivotalcoin wallet</a
-              >
-              <a
-                href=""
-                class="
-                  border
-                  text-lg
-                  w-full
-                  py-4
-                  rounded-md
-                  hover:bg-brand-secondary
-                  hover:border-brand-secondary
-                "
-                >buy PivotalCoin</a
-              >
-            </div>
-          </div>
-
-          <div class="">
-            <img src="./image/desktop.png" alt="" class="object-cover w-full" />
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <section class="mt-20 mb-36 px-4 py-2 flex justify-center w-full">
-      <div class="container">
-        <div class="text-center text-white space-y-8 mb-32">
-          <h2 class="text-5xl font-bold">Our Advantages</h2>
-          <p class="max-w-4xl text-xl mx-auto">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s,
-          </p>
-        </div>
-
-        <div class="grid lg:grid-cols-3 grid-cols-1 gap-10 text-white">
-          <div class="">
-            <div
-              class="
-                flex flex-col
-                space-y-16
-                px-8
-                py-12
-                hover:bg-brand-primary
-                rounded-lg
-                h-full
-              "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="96"
-                height="98"
-                viewBox="0 0 96 98"
-              >
-                <g
-                  id="Group_952"
-                  data-name="Group 952"
-                  transform="translate(-233 -1699)"
-                >
-                  <rect
-                    id="Rectangle_632"
-                    data-name="Rectangle 632"
-                    width="96"
-                    height="98"
-                    rx="18"
-                    transform="translate(233 1699)"
-                    fill="#fc776a"
-                  />
-                  <g
-                    id="Group_938"
-                    data-name="Group 938"
-                    transform="translate(757.377 890.353)"
-                  >
-                    <path
-                      id="Path_1638"
-                      data-name="Path 1638"
-                      d="M-366.862,949.127l-.47.47v4.082a8.154,8.154,0,0,1,2.723,3.617l2.941-2.94C-364.423,953.409-366.115,950.645-366.862,949.127Z"
-                      transform="translate(-90.844 -78.142)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1639"
-                      data-name="Path 1639"
-                      d="M-458.908,879.745a1.6,1.6,0,0,1-1.524,1.655h-39.9a1.6,1.6,0,0,1-1.525-1.655v-44.47a1.6,1.6,0,0,1,1.525-1.654h39.9a1.594,1.594,0,0,1,1.524,1.654v30.711a.732.732,0,0,0,.731.733.731.731,0,0,0,.732-.733V835.274a3.06,3.06,0,0,0-2.987-3.118h-39.9a3.06,3.06,0,0,0-2.988,3.118v44.47a3.06,3.06,0,0,0,2.988,3.12h39.9a3.06,3.06,0,0,0,2.987-3.12.732.732,0,0,0-.732-.733A.733.733,0,0,0-458.908,879.745Z"
-                      transform="translate(0 0)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1640"
-                      data-name="Path 1640"
-                      d="M-488.717,848.656a3.581,3.581,0,0,0-3.577,3.577,3.582,3.582,0,0,0,3.577,3.577,3.583,3.583,0,0,0,3.578-3.577A3.582,3.582,0,0,0-488.717,848.656Zm0,5.691a2.116,2.116,0,0,1-2.113-2.114,2.116,2.116,0,0,1,2.113-2.115,2.116,2.116,0,0,1,2.115,2.115A2.116,2.116,0,0,1-488.717,854.348Z"
-                      transform="translate(-7.364 -11.023)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1641"
-                      data-name="Path 1641"
-                      d="M-488.717,879.418A3.582,3.582,0,0,0-492.294,883a3.583,3.583,0,0,0,3.577,3.579A3.583,3.583,0,0,0-485.138,883,3.582,3.582,0,0,0-488.717,879.418Zm0,5.692A2.115,2.115,0,0,1-490.83,883a2.116,2.116,0,0,1,2.113-2.113A2.116,2.116,0,0,1-486.6,883,2.115,2.115,0,0,1-488.717,885.109Z"
-                      transform="translate(-7.364 -31.573)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1642"
-                      data-name="Path 1642"
-                      d="M-488.717,912.7a3.581,3.581,0,0,0-3.577,3.577,3.581,3.581,0,0,0,3.577,3.579,3.582,3.582,0,0,0,3.578-3.579A3.582,3.582,0,0,0-488.717,912.7Zm0,5.691a2.116,2.116,0,0,1-2.113-2.115,2.117,2.117,0,0,1,2.113-2.115,2.116,2.116,0,0,1,2.115,2.115A2.115,2.115,0,0,1-488.717,918.394Z"
-                      transform="translate(-7.364 -53.809)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1643"
-                      data-name="Path 1643"
-                      d="M-488.717,947.877a3.582,3.582,0,0,0-3.577,3.578,3.58,3.58,0,0,0,3.577,3.576,3.581,3.581,0,0,0,3.578-3.576A3.583,3.583,0,0,0-488.717,947.877Zm0,5.692a2.116,2.116,0,0,1-2.113-2.114,2.117,2.117,0,0,1,2.113-2.115,2.117,2.117,0,0,1,2.115,2.115A2.116,2.116,0,0,1-488.717,953.569Z"
-                      transform="translate(-7.364 -77.307)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1644"
-                      data-name="Path 1644"
-                      d="M-439.737,960.78l-26.9-.174a.74.74,0,0,0-.737.727.732.732,0,0,0,.727.738l26.9.174h0a.731.731,0,0,0,.732-.729A.732.732,0,0,0-439.737,960.78Z"
-                      transform="translate(-24.014 -85.81)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1645"
-                      data-name="Path 1645"
-                      d="M-349.421,972.848a1.245,1.245,0,0,1,.352.869,1.256,1.256,0,0,1-1.254,1.255,1.249,1.249,0,0,1-.87-.353l-1.034,1.035a2.711,2.711,0,0,0,1.9.78,2.72,2.72,0,0,0,2.718-2.717,2.7,2.7,0,0,0-.781-1.9Z"
-                      transform="translate(-100.935 -93.297)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1646"
-                      data-name="Path 1646"
-                      d="M-382.637,936.663l1.721,1.72,1.034-1.035-1.815-1.815A13.279,13.279,0,0,1-382.637,936.663Z"
-                      transform="translate(-80.62 -69.061)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1647"
-                      data-name="Path 1647"
-                      d="M-385.763,943.209l-1.721-1.721a13.792,13.792,0,0,1-1.137.931l1.824,1.825Z"
-                      transform="translate(-76.623 -73.039)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1648"
-                      data-name="Path 1648"
-                      d="M-431.33,893.488c.16-.146.318-.3.472-.449.13-.13.254-.263.377-.4a13.215,13.215,0,0,0,.94-1.13,13.73,13.73,0,0,0-1.317-17.861,13.623,13.623,0,0,0-9.694-4.014,13.626,13.626,0,0,0-9.694,4.014,13.725,13.725,0,0,0,0,19.388,13.618,13.618,0,0,0,9.694,4.015,13.612,13.612,0,0,0,8.085-2.635A13.806,13.806,0,0,0-431.33,893.488ZM-449.212,892a12.263,12.263,0,0,1,0-17.32,12.169,12.169,0,0,1,8.659-3.585,12.173,12.173,0,0,1,8.66,3.585,12.264,12.264,0,0,1,0,17.32,12.171,12.171,0,0,1-8.66,3.586A12.169,12.169,0,0,1-449.212,892Z"
-                      transform="translate(-32.776 -25.039)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1649"
-                      data-name="Path 1649"
-                      d="M-426.425,897.483a10.239,10.239,0,0,0,3.018-7.286,10.24,10.24,0,0,0-3.018-7.287,10.239,10.239,0,0,0-7.286-3.017A10.236,10.236,0,0,0-441,882.91a10.237,10.237,0,0,0-3.018,7.287A10.236,10.236,0,0,0-441,897.483a10.239,10.239,0,0,0,7.285,3.017A10.238,10.238,0,0,0-426.425,897.483Zm-13.536-1.036a8.778,8.778,0,0,1-2.59-6.25,8.786,8.786,0,0,1,2.59-6.253,8.782,8.782,0,0,1,6.25-2.588,8.788,8.788,0,0,1,6.251,2.588,8.791,8.791,0,0,1,2.59,6.253,8.783,8.783,0,0,1-2.59,6.25,8.779,8.779,0,0,1-6.251,2.591A8.773,8.773,0,0,1-439.961,896.447Z"
-                      transform="translate(-39.617 -31.89)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1650"
-                      data-name="Path 1650"
-                      d="M-381.856,937.766l-.782.781-1.034,1.035-.849.847-1.034,1.035-.765.767a1.8,1.8,0,0,0,.2,2.547,2.092,2.092,0,0,0,1.453.637,1.619,1.619,0,0,0,.65-.136c-.2-.085-.316-.131-.325-.134a.73.73,0,0,1-.434-.939.733.733,0,0,1,.939-.435c.063.024.457.172,1.021.449l2.506-2.506.47-.47c-.278-.563-.425-.958-.449-1.022a.73.73,0,0,1,.435-.937.731.731,0,0,1,.939.433c0,.009.047.122.129.311a1.925,1.925,0,0,0-.518-2.067,2.173,2.173,0,0,0-1.005-.576,1.792,1.792,0,0,0-.448-.06A1.527,1.527,0,0,0-381.856,937.766Zm1.712,1.711-4.464,4.463a.154.154,0,0,1-.061.01.637.637,0,0,1-.419-.207.528.528,0,0,1-.2-.48l4.464-4.464a.173.173,0,0,1,.06-.009.628.628,0,0,1,.418.207A.53.53,0,0,1-380.145,939.477Z"
-                      transform="translate(-77.864 -70.258)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1651"
-                      data-name="Path 1651"
-                      d="M-355.164,961.766a2.092,2.092,0,0,0-1.454-.635,1.583,1.583,0,0,0-.487.074,4.182,4.182,0,0,0,.553.037h.054a.73.73,0,0,1,.73.724.728.728,0,0,1-.574.722.807.807,0,0,1,.142.113.525.525,0,0,1,.2.479l-4.463,4.463a.127.127,0,0,1-.061.01.64.64,0,0,1-.419-.206.745.745,0,0,1-.188-.3c0,.033,0,.064,0,.1a.733.733,0,0,1-.732.723h-.008a.733.733,0,0,1-.724-.74c0-.135,0-.269-.013-.4a2.031,2.031,0,0,0,.627,1.65,2.1,2.1,0,0,0,1.454.638,1.533,1.533,0,0,0,1.1-.44l.261-.26,1.034-1.035,1.772-1.771,1.034-1.035.362-.363A1.8,1.8,0,0,0-355.164,961.766Z"
-                      transform="translate(-93.993 -86.161)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1652"
-                      data-name="Path 1652"
-                      d="M-354.44,965.2a6,6,0,0,1-1.748-.322l-2.941,2.94a6.006,6.006,0,0,1,.322,1.749Z"
-                      transform="translate(-96.324 -88.665)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1653"
-                      data-name="Path 1653"
-                      d="M-374.1,965.045h.008a.733.733,0,0,0,.732-.723c0-.035,0-.066,0-.1,0-.063,0-.121-.006-.182a6,6,0,0,0-.322-1.749,8.154,8.154,0,0,0-2.723-3.617,14.045,14.045,0,0,0-2.506-1.576c-.564-.277-.958-.425-1.021-.449a.734.734,0,0,0-.939.435.731.731,0,0,0,.434.939c.009,0,.129.049.325.134a11.875,11.875,0,0,1,3.707,2.5,5.348,5.348,0,0,1,1.576,3.247c.01.131.015.265.013.4A.733.733,0,0,0-374.1,965.045Z"
-                      transform="translate(-81.766 -83.137)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1654"
-                      data-name="Path 1654"
-                      d="M-366.925,943.134a.73.73,0,0,0-.435.937c.024.063.171.459.449,1.022.747,1.518,2.439,4.282,5.194,5.229a6,6,0,0,0,1.748.322c.072,0,.143.008.217.008h.063a.6.6,0,0,0,.15-.018.728.728,0,0,0,.574-.722.73.73,0,0,0-.73-.724h-.054a4.171,4.171,0,0,1-.553-.037c-.115-.014-.226-.033-.336-.054-2.261-.457-3.813-2.581-4.641-4.059-.271-.483-.463-.9-.579-1.16-.082-.189-.126-.3-.129-.311A.731.731,0,0,0-366.925,943.134Z"
-                      transform="translate(-90.796 -74.108)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1655"
-                      data-name="Path 1655"
-                      d="M-407.079,911.547a3.252,3.252,0,0,0-3.109-3.246c-.023,0-.043,0-.066,0h-.517v1.464h.444a1.786,1.786,0,0,1,1.784,1.784,1.788,1.788,0,0,1-1.784,1.785h-.444V914.8h.444A3.253,3.253,0,0,0-407.079,911.547Z"
-                      transform="translate(-61.825 -50.867)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1656"
-                      data-name="Path 1656"
-                      d="M-423.05,898.167a1.788,1.788,0,0,1-1.785-1.786,1.787,1.787,0,0,1,1.785-1.784h.442v-1.464h-.442a3.252,3.252,0,0,0-3.248,3.248,3.253,3.253,0,0,0,3.248,3.25h.442v-1.464Z"
-                      transform="translate(-51.453 -40.735)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1657"
-                      data-name="Path 1657"
-                      d="M-422.608,923.461h-2.959a.731.731,0,0,0-.731.731.731.731,0,0,0,.731.733h2.959v-1.463Z"
-                      transform="translate(-51.453 -60.996)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1658"
-                      data-name="Path 1658"
-                      d="M-407.811,894.6a.732.732,0,0,0,.732-.732.732.732,0,0,0-.732-.732h-2.96V894.6Z"
-                      transform="translate(-61.825 -40.735)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1659"
-                      data-name="Path 1659"
-                      d="M-414.449,926.395a.732.732,0,0,1-.732-.733v2.229a.732.732,0,0,0,.732.735.732.732,0,0,0,.732-.735v-2.229A.732.732,0,0,1-414.449,926.395Z"
-                      transform="translate(-58.879 -62.466)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1660"
-                      data-name="Path 1660"
-                      d="M-414.449,900.753a.732.732,0,0,0,.732-.733V888.01a.731.731,0,0,0-.732-.731.731.731,0,0,0-.732.731v12.01A.732.732,0,0,0-414.449,900.753Z"
-                      transform="translate(-58.879 -36.825)"
-                      fill="#fff"
-                    />
-                  </g>
-                </g>
-              </svg>
-
-              <div class="space-y-6">
-                <h5 class="text-2xl font-bold">Mining units</h5>
-                <p class="text-lg leading-loose">
-                  These would be Installed in strategic geographical poins
-                  around the world and used to mine both PVC and BTC at the same
-                  time, this will help stabilize PVC price on the market,
-                  Through mining both PVC and BTC at a cheaper price.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="">
-            <div
-              class="
-                flex flex-col
-                space-y-16
-                px-8
-                py-12
-                hover:bg-brand-primary
-                rounded-lg
-                h-full
-              "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="96"
-                height="98"
-                viewBox="0 0 96 98"
-              >
-                <g
-                  id="Group_996"
-                  data-name="Group 996"
-                  transform="translate(-771 -1887)"
-                >
-                  <rect
-                    id="Rectangle_632"
-                    data-name="Rectangle 632"
-                    width="96"
-                    height="98"
-                    rx="18"
-                    transform="translate(771 1887)"
-                    fill="#faaf6a"
-                  />
-                  <g
-                    id="finances-svgrepo-com"
-                    transform="translate(775.034 1870.555)"
-                  >
-                    <g
-                      id="Group_940"
-                      data-name="Group 940"
-                      transform="translate(60.766 92.809)"
-                    >
-                      <path
-                        id="Path_1684"
-                        data-name="Path 1684"
-                        d="M422.6,487.8"
-                        transform="translate(-422.6 -487.8)"
-                        fill="none"
-                        stroke="#000"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                        stroke-width="66.666"
-                      />
-                    </g>
-                    <g
-                      id="Group_942"
-                      data-name="Group 942"
-                      transform="translate(10.966 38.445)"
-                    >
-                      <g id="Group_941" data-name="Group 941">
-                        <path
-                          id="Path_1685"
-                          data-name="Path 1685"
-                          d="M45.909,51.143a1.3,1.3,0,0,0,1.536.907,1.26,1.26,0,0,0,.907-1.536L45.51,39.4a1.251,1.251,0,0,0-1.536-.907L32.855,41.331a1.262,1.262,0,1,0,.629,2.444l8.662-2.214L31.1,57.869l-3.763-9.11a1.271,1.271,0,0,0-2.166-.278L11.224,66.761a1.257,1.257,0,0,0,.242,1.766,1.3,1.3,0,0,0,1.766-.242l12.606-16.55,3.823,9.255a1.269,1.269,0,0,0,2.214.23l12.062-17.8Z"
-                          transform="translate(-10.966 -38.445)"
-                          fill="#fff"
-                        />
-                        <path
-                          id="Path_1686"
-                          data-name="Path 1686"
-                          d="M233.616,164.5c-8.348,0-17.216,2.492-17.216,7.114V194.77c0,4.621,8.868,7.114,17.216,7.114,8.553,0,17.216-2.444,17.216-7.114V171.614C250.831,166.944,242.169,164.5,233.616,164.5ZM248.3,194.77c0,1.875-5.722,4.6-14.7,4.6s-14.7-2.722-14.7-4.6v-3.883c3.23,2.141,9.086,3.279,14.7,3.279,5.734,0,11.505-1.1,14.7-3.218Zm0-7.719c0,1.875-5.722,4.6-14.7,4.6s-14.7-2.722-14.7-4.6v-3.883c3.23,2.141,9.086,3.279,14.7,3.279,5.734,0,11.505-1.1,14.7-3.218Zm0-7.719c0,1.875-5.722,4.6-14.7,4.6s-14.7-2.722-14.7-4.6v-3.883c3.23,2.141,9.086,3.279,14.7,3.279,5.734,0,11.505-1.1,14.7-3.218Zm-14.687-3.121c-8.977,0-14.7-2.722-14.7-4.6s5.722-4.6,14.7-4.6,14.7,2.722,14.7,4.6S242.58,176.211,233.616,176.211Z"
-                          transform="translate(-191.546 -149.25)"
-                          fill="#fff"
-                        />
-                        <path
-                          id="Path_1687"
-                          data-name="Path 1687"
-                          d="M334.056,195.638a7.067,7.067,0,0,0-2.553-.714v-1.657a1.181,1.181,0,0,1,.932.677l1.972-.145a1.762,1.762,0,0,0-.932-1.016,4.929,4.929,0,0,0-1.972-.46V191.9h-1.125v.423a4.8,4.8,0,0,0-2.154.544,1.353,1.353,0,0,0-.811,1.174,1.414,1.414,0,0,0,.714,1.174,5.569,5.569,0,0,0,2.238.714v1.778a2.434,2.434,0,0,1-.762-.351,1.327,1.327,0,0,1-.472-.581l-2.032.121a2.1,2.1,0,0,0,1.077,1.295,5.379,5.379,0,0,0,2.19.544v.774h1.125v-.8a5.387,5.387,0,0,0,2.371-.641,1.53,1.53,0,0,0,.859-1.295A1.274,1.274,0,0,0,334.056,195.638Zm-3.69-.919a2.061,2.061,0,0,1-.762-.315.541.541,0,0,1-.254-.423.563.563,0,0,1,.278-.448,1.81,1.81,0,0,1,.738-.29Zm2.093,2.746a2.075,2.075,0,0,1-.956.29V196.1a2.64,2.64,0,0,1,1,.315.576.576,0,0,1,.3.484A.63.63,0,0,1,332.459,197.465Z"
-                          transform="translate(-288.854 -173.335)"
-                          fill="#fff"
-                        />
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-
-              <div class="space-y-6">
-                <h5 class="text-2xl font-bold">Asset Based Coin</h5>
-                <p class="text-lg leading-loose">
-                  PVC is an asset based coin, so the price pegged against it
-                  would not fall much, since it is backed by tangible assets and
-                  has several cash inflows.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="">
-            <div
-              class="
-                flex flex-col
-                space-y-16
-                px-8
-                py-12
-                hover:bg-brand-primary
-                rounded-lg
-                h-full
-              "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="96"
-                height="98"
-                viewBox="0 0 96 98"
-              >
-                <g
-                  id="Group_955"
-                  data-name="Group 955"
-                  transform="translate(-1328 -1699)"
-                >
-                  <rect
-                    id="Rectangle_632"
-                    data-name="Rectangle 632"
-                    width="96"
-                    height="98"
-                    rx="18"
-                    transform="translate(1328 1699)"
-                    fill="#7a86dd"
-                  />
-                  <g
-                    id="investment-model-svgrepo-com"
-                    transform="translate(1349.125 1709.903)"
-                  >
-                    <path
-                      id="Path_1691"
-                      data-name="Path 1691"
-                      d="M118.478,92.316v-.962a1.373,1.373,0,1,0-2.746,0v.995a5.76,5.76,0,0,0,0,11.118v5.772a10.168,10.168,0,0,1-2.728-2.2,1.373,1.373,0,0,0-2.1,1.768,11.344,11.344,0,0,0,4.83,3.376V113.2a1.373,1.373,0,1,0,2.746,0v-.97a5.755,5.755,0,0,0,0-11.167V95.179a8.563,8.563,0,0,1,2.788,1.853,1.373,1.373,0,0,0,1.983-1.9A10.545,10.545,0,0,0,118.478,92.316Zm-4.253,5.593a3.009,3.009,0,0,1,1.507-2.617v5.232A3.007,3.007,0,0,1,114.225,97.909Zm5.867,8.737a3,3,0,0,1-1.613,2.672v-5.342A3,3,0,0,1,120.091,106.646Z"
-                      transform="translate(-90.334 -63.781)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1692"
-                      data-name="Path 1692"
-                      d="M48.814,47.5a5.9,5.9,0,0,0-3.884,1.455l-3.921-2.614a16.228,16.228,0,0,0-.83-17.029l2.646-2.117a5.934,5.934,0,1,0-1.908-1.99L38.44,27.185a16.228,16.228,0,0,0-22.153-1.107l-5.262-5.214a5.941,5.941,0,1,0-1.913,1.971l5.234,5.186a16.225,16.225,0,0,0-.9,19.789L8.484,51.948a4.35,4.35,0,1,0,1.929,1.968l4.8-4A16.238,16.238,0,0,0,32.788,53.6l1.224,2.447a3.649,3.649,0,1,0,2.571-1.062h-.03l-1.31-2.619a16.385,16.385,0,0,0,4.24-3.748l3.844,2.563A5.929,5.929,0,1,0,48.814,47.5ZM46.033,19.027a3.183,3.183,0,1,1-3.183,3.183A3.187,3.187,0,0,1,46.033,19.027ZM6.5,57.423a1.6,1.6,0,1,1,1.6-1.6A1.606,1.606,0,0,1,6.5,57.423Zm30.986,1.215a.9.9,0,1,1-.905-.9A.906.906,0,0,1,37.487,58.638ZM5.93,21.017a3.183,3.183,0,1,1,3.183-3.183A3.187,3.187,0,0,1,5.93,21.017ZM26.771,52.009A13.514,13.514,0,1,1,40.284,38.5,13.529,13.529,0,0,1,26.771,52.009Zm22.044,4.6A3.183,3.183,0,1,1,52,53.428,3.187,3.187,0,0,1,48.814,56.611Z"
-                      transform="translate(0)"
-                      fill="#fff"
-                    />
-                  </g>
-                </g>
-              </svg>
-
-              <div class="space-y-6">
-                <h5 class="text-2xl font-bold">Direct Investment Initiative</h5>
-                <p class="text-lg leading-loose">
-                  PVC will invest in green energy and innovations that may sound
-                  viable. This may help to keep, PVC stable.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="">
-            <div
-              class="
-                flex flex-col
-                space-y-16
-                px-8
-                py-12
-                hover:bg-brand-primary
-                rounded-lg
-                h-full
-              "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="96"
-                height="98"
-                viewBox="0 0 96 98"
-              >
-                <g
-                  id="Group_957"
-                  data-name="Group 957"
-                  transform="translate(-256 -2266)"
-                >
-                  <rect
-                    id="Rectangle_632"
-                    data-name="Rectangle 632"
-                    width="96"
-                    height="98"
-                    rx="18"
-                    transform="translate(256 2266)"
-                    fill="#d65afb"
-                  />
-                  <path
-                    id="award-svgrepo-com"
-                    d="M29.692,50.348a.712.712,0,0,1-.086-.005H29.6a.659.659,0,0,1-.089-.017h0a.723.723,0,0,1-.329-.189v0l0,0L19.288,39.979h0v0a.722.722,0,0,1-.177-.315h0v0h0a.712.712,0,0,1-.019-.1h0v0h0v0h0a.767.767,0,0,1,0-.077V.722A.722.722,0,0,1,19.806,0H57.687a.722.722,0,0,1,.722.722v48.9a.722.722,0,0,1-.722.722h-28Zm.722-1.444h26.55V1.444H20.527V38.753h9.165a.722.722,0,0,1,.722.722V48.9Zm-8.9-8.707,7.453,7.652V40.2Zm31.362-4.484H24.749a.722.722,0,1,1,0-1.444h28.13a.722.722,0,1,1,0,1.444Zm0-3.707H24.749a.722.722,0,1,1,0-1.444h28.13a.722.722,0,1,1,0,1.444ZM47.33,26.845a.722.722,0,0,1-.722-.706l-.027-1.2-4.963-.774a.722.722,0,0,1-.588-.893l1.9-7.4a6.775,6.775,0,1,1,11.438-5.441h0a6.766,6.766,0,0,1-2.021,5.392l1.964,9.287a.722.722,0,0,1-.608.865l-6.269.863A.637.637,0,0,1,47.33,26.845Zm.531-9.094.172,7.546,4.7-.646L51.072,16.8a6.743,6.743,0,0,1-2.918.931C48.057,17.741,47.958,17.746,47.861,17.75Zm-5.235,5.115,3.818.6.094-.4-.124-5.407a6.747,6.747,0,0,1-2.24-.832Zm4.986-17.22q-.216,0-.434.018a5.332,5.332,0,1,0,5.745,4.885h0A5.341,5.341,0,0,0,47.612,5.645ZM36.352,17.1h-11.6a.722.722,0,0,1,0-1.444h11.6a.722.722,0,1,1,0,1.444Zm0-4.371h-11.6a.722.722,0,0,1,0-1.444h11.6a.722.722,0,1,1,0,1.444Zm0-4.637h-11.6a.722.722,0,0,1,0-1.444h11.6a.722.722,0,1,1,0,1.444Z"
-                    transform="translate(263.253 2289.673)"
-                    fill="#fff"
-                  />
-                </g>
-              </svg>
-
-              <div class="space-y-6">
-                <h5 class="text-2xl font-bold">Proof Of Work Algorithm</h5>
-                <p class="text-lg leading-loose">
-                  Miners will form pools and mine PVC and will be awarded,
-                  according to how much difficulty level they try to solve to
-                  find PVC and the extra hashpower will be used to mine Bitcoin.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="">
-            <div
-              class="
-                flex flex-col
-                space-y-16
-                px-8
-                py-12
-                hover:bg-brand-primary
-                rounded-lg
-                h-full
-              "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="96"
-                height="98"
-                viewBox="0 0 96 98"
-              >
-                <g
-                  id="Group_959"
-                  data-name="Group 959"
-                  transform="translate(-791 -2266)"
-                >
-                  <rect
-                    id="Rectangle_632"
-                    data-name="Rectangle 632"
-                    width="96"
-                    height="98"
-                    rx="18"
-                    transform="translate(791 2266)"
-                    fill="#57d4a5"
-                  />
-                  <g
-                    id="community-svgrepo-com"
-                    transform="translate(797.075 2286.378)"
-                  >
-                    <path
-                      id="Path_1677"
-                      data-name="Path 1677"
-                      d="M110,7.852a4.843,4.843,0,1,0-8.637-3,4.791,4.791,0,0,0,1,3,7.176,7.176,0,0,0-3.372,6.03v5.9a1.753,1.753,0,0,0,1.719,1.678h11.019a1.628,1.628,0,0,0,1.575-1.678v-5.9A7.112,7.112,0,0,0,110,7.852Z"
-                      transform="translate(-64.219)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1678"
-                      data-name="Path 1678"
-                      d="M31.083,53.087v-5.9a7.063,7.063,0,0,0-3.246-6.03,4.821,4.821,0,1,0-7.534,0,7.125,7.125,0,0,0-3.316,6.03v5.9A1.6,1.6,0,0,0,18.6,54.7H29.62A1.483,1.483,0,0,0,31.083,53.087Z"
-                      transform="translate(0 -26.08)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1679"
-                      data-name="Path 1679"
-                      d="M192.84,41.155a4.819,4.819,0,1,0-7.534,0,7.127,7.127,0,0,0-3.319,6.03v5.9a1.609,1.609,0,0,0,1.62,1.613h11.019a1.479,1.479,0,0,0,1.457-1.613v-5.9A7.061,7.061,0,0,0,192.84,41.155Z"
-                      transform="translate(-129.219 -26.081)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1680"
-                      data-name="Path 1680"
-                      d="M110,173.107a4.818,4.818,0,1,0-7.639,0,7.176,7.176,0,0,0-3.372,6.03v5.9a1.705,1.705,0,0,0,1.719,1.623h11.019a1.58,1.58,0,0,0,1.575-1.623v-5.9A7.113,7.113,0,0,0,110,173.107Zm-3.782-4.6a1.6,1.6,0,1,1-1.6,1.6A1.6,1.6,0,0,1,106.216,168.508Zm3.831,14.9h-7.807v-4.273a3.9,3.9,0,0,1,7.807,0Z"
-                      transform="translate(-64.219 -129.419)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1681"
-                      data-name="Path 1681"
-                      d="M127.241,113.217v-5.39a1.626,1.626,0,1,0-3.253,0v5.39a1.626,1.626,0,1,0,3.253,0Z"
-                      transform="translate(-83.797 -83.171)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1682"
-                      data-name="Path 1682"
-                      d="M49.418,138.569a1.627,1.627,0,0,0-2.237,2.362l8.177,7.743a1.627,1.627,0,0,0,2.237-2.362Z"
-                      transform="translate(-23.249 -108.171)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1683"
-                      data-name="Path 1683"
-                      d="M173.965,138.452l-8.155,7.761a1.626,1.626,0,1,0,2.242,2.356l8.155-7.761a1.626,1.626,0,0,0-2.242-2.356Z"
-                      transform="translate(-116.155 -108.078)"
-                      fill="#fff"
-                    />
-                  </g>
-                </g>
-              </svg>
-
-              <div class="space-y-6">
-                <h5 class="text-2xl font-bold">Community initiative</h5>
-                <p class="text-lg leading-loose">
-                  PVC wil try to assist in the local communities in which it
-                  establishes with focus to help local organisations that work
-                  with underprivileged groups in the society.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="">
-            <div
-              class="
-                flex flex-col
-                space-y-16
-                px-8
-                py-12
-                hover:bg-brand-primary
-                rounded-lg
-                h-full
-              "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="96"
-                height="98"
-                viewBox="0 0 96 98"
-              >
-                <g
-                  id="Group_961"
-                  data-name="Group 961"
-                  transform="translate(-1292 -2266)"
-                >
-                  <rect
-                    id="Rectangle_632"
-                    data-name="Rectangle 632"
-                    width="96"
-                    height="98"
-                    rx="18"
-                    transform="translate(1292 2266)"
-                    fill="#d6bf20"
-                  />
-                  <g
-                    id="enviromental-protection-svgrepo-com"
-                    transform="translate(1266.399 2286.738)"
-                  >
-                    <path
-                      id="Path_1688"
-                      data-name="Path 1688"
-                      d="M88.744,285.316H80.077a.9.9,0,0,0,0,1.8h8.667a1.724,1.724,0,0,1,1.652,2.216,3.506,3.506,0,0,0-1.652-.412H77a3.53,3.53,0,0,0-.584-4.218l-9.941-9.941a9.951,9.951,0,0,0-6.218-2.575H47.971a.9.9,0,0,0,0,1.8H60.256a8.166,8.166,0,0,1,4.942,2.047l9.941,9.941a1.724,1.724,0,0,1-2.438,2.438l-8.079-8.079a.9.9,0,0,0-1.276,1.275l8.079,8.079a3.515,3.515,0,0,0,2.432,1.03c.021,0,.041,0,.063,0H88.744a1.724,1.724,0,0,1,0,3.448l-16.554-.015a4.088,4.088,0,0,1-1.584-.411L53.782,283.36l-.032-.019a5.8,5.8,0,0,0-2.481-.65h-3.3a.9.9,0,0,0,0,1.8h3.3a4.076,4.076,0,0,1,1.583.41L69.677,295.3l.032.019a5.811,5.811,0,0,0,2.48.651l16.555.015a3.526,3.526,0,0,0,3.031-5.33,3.527,3.527,0,0,0-3.031-5.333Z"
-                      transform="translate(0 -239.455)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1689"
-                      data-name="Path 1689"
-                      d="M250.445,157.093a.9.9,0,1,0,.2,1.793,9.966,9.966,0,0,1,1.1-.061,9.827,9.827,0,0,1,6.336,2.317.9.9,0,1,0,1.164-1.378,11.632,11.632,0,0,0-6.6-2.706V142.465l4.728-4.316a.9.9,0,0,0-1.216-1.332l-3.512,3.206v-5.8a.9.9,0,0,0-1.8,0v5.8l-3.512-3.206a.9.9,0,0,0-1.216,1.332l4.728,4.315v14.592C250.711,157.067,250.577,157.078,250.445,157.093Z"
-                      transform="translate(-174.85 -117.286)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Path_1690"
-                      data-name="Path 1690"
-                      d="M178.78,30.269a.9.9,0,0,0,.448-1.747,13.571,13.571,0,1,1,6.767,0,.9.9,0,0,0,.448,1.747,15.376,15.376,0,1,0-7.664,0Z"
-                      transform="translate(-105.715)"
-                      fill="#fff"
-                    />
-                  </g>
-                </g>
-              </svg>
-
-              <div class="space-y-6">
-                <h5 class="text-2xl font-bold">
-                  Environmental Friendly Approach
-                </h5>
-                <p class="text-lg leading-loose">
-                  PVC will try at all cost to be a Green project and sensitive
-                  to the environment.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mt-20 mb-36 px-4 py-2 flex justify-center w-full">
-      <div class="container">
-        <div
-          class="
-            bg-brand-primary
-            rounded-2xl
-            lg:px-28
-            lg:py-32
-            px-16
-            py-24
-            text-white
-          "
-        >
-          <h2 class="text-center text-5xl font-bold mb-24">
-            30 Days Money Back Guarantee
-          </h2>
-
-          <div class="grid lg:grid-cols-2 gap-36 grid-cols-1">
-            <div class="">
-              <div class="space-y-16">
-                <div class="space-y-8">
-                  <h4 class="text-3xl font-semibold">Our first priority</h4>
-                  <p class="text-lg leading-loose">
-                    Pivotalcoin will strive to be one of the platforms that
-                    serves interests of the people with diligence and
-                    transparency in Cryptocurrency and asset based investments.
-                    We will make investing in cryptos more enjoyable by marking
-                    the value of PVC to a solid asset.
-                  </p>
+        <section class="mt-20 mb-36 px-4 py-2 flex justify-center w-full">
+            <div class="container">
+                <div class="text-center text-white space-y-8 mb-32">
+                    <h2 class="text-5xl font-bold">Our Advantages</h2>
+                    <p class="max-w-4xl text-xl mx-auto">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
                 </div>
 
-                <div class="space-y-8">
-                  <h4 class="text-3xl font-semibold">
-                    Pivotalcoin will work with Paypal
-                  </h4>
-                  <p class="text-lg leading-loose">
-                    Pivotalcoin will work along with Paypal and has a 30 day
-                    moneyback guarantee, we would like to create a spirit of
-                    togetherness and trust between PVC and our investors, our
-                    customers should feel well cared for and our aims and
-                    objectives should be achieved in all angles. Our 30 day
-                    moneyback guarantee would allow us to refund our customers
-                    when they decide otherwise within 30days, and paypal has
-                    even more than 30 days refund time. So all this is in favour
-                    of our clients because we trust that Pivotalcoin is going to
-                    be one of the big thing not just in theory but practically.
-                  </p>
+                <div class="grid lg:grid-cols-3 grid-cols-1 gap-10 text-white">
+                    <div class="">
+                        <div class="flex flex-col space-y-16 px-8 py-12 hover:bg-brand-primary rounded-lg h-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="96" height="98" viewBox="0 0 96 98">
+                                <g id="Group_952" data-name="Group 952" transform="translate(-233 -1699)">
+                                    <rect id="Rectangle_632" data-name="Rectangle 632" width="96" height="98" rx="18" transform="translate(233 1699)" fill="#fc776a" />
+                                    <g id="Group_938" data-name="Group 938" transform="translate(757.377 890.353)">
+                                        <path id="Path_1638" data-name="Path 1638" d="M-366.862,949.127l-.47.47v4.082a8.154,8.154,0,0,1,2.723,3.617l2.941-2.94C-364.423,953.409-366.115,950.645-366.862,949.127Z" transform="translate(-90.844 -78.142)" fill="#fff" />
+                                        <path id="Path_1639" data-name="Path 1639" d="M-458.908,879.745a1.6,1.6,0,0,1-1.524,1.655h-39.9a1.6,1.6,0,0,1-1.525-1.655v-44.47a1.6,1.6,0,0,1,1.525-1.654h39.9a1.594,1.594,0,0,1,1.524,1.654v30.711a.732.732,0,0,0,.731.733.731.731,0,0,0,.732-.733V835.274a3.06,3.06,0,0,0-2.987-3.118h-39.9a3.06,3.06,0,0,0-2.988,3.118v44.47a3.06,3.06,0,0,0,2.988,3.12h39.9a3.06,3.06,0,0,0,2.987-3.12.732.732,0,0,0-.732-.733A.733.733,0,0,0-458.908,879.745Z" transform="translate(0 0)" fill="#fff" />
+                                        <path id="Path_1640" data-name="Path 1640" d="M-488.717,848.656a3.581,3.581,0,0,0-3.577,3.577,3.582,3.582,0,0,0,3.577,3.577,3.583,3.583,0,0,0,3.578-3.577A3.582,3.582,0,0,0-488.717,848.656Zm0,5.691a2.116,2.116,0,0,1-2.113-2.114,2.116,2.116,0,0,1,2.113-2.115,2.116,2.116,0,0,1,2.115,2.115A2.116,2.116,0,0,1-488.717,854.348Z" transform="translate(-7.364 -11.023)" fill="#fff" />
+                                        <path id="Path_1641" data-name="Path 1641" d="M-488.717,879.418A3.582,3.582,0,0,0-492.294,883a3.583,3.583,0,0,0,3.577,3.579A3.583,3.583,0,0,0-485.138,883,3.582,3.582,0,0,0-488.717,879.418Zm0,5.692A2.115,2.115,0,0,1-490.83,883a2.116,2.116,0,0,1,2.113-2.113A2.116,2.116,0,0,1-486.6,883,2.115,2.115,0,0,1-488.717,885.109Z" transform="translate(-7.364 -31.573)" fill="#fff" />
+                                        <path id="Path_1642" data-name="Path 1642" d="M-488.717,912.7a3.581,3.581,0,0,0-3.577,3.577,3.581,3.581,0,0,0,3.577,3.579,3.582,3.582,0,0,0,3.578-3.579A3.582,3.582,0,0,0-488.717,912.7Zm0,5.691a2.116,2.116,0,0,1-2.113-2.115,2.117,2.117,0,0,1,2.113-2.115,2.116,2.116,0,0,1,2.115,2.115A2.115,2.115,0,0,1-488.717,918.394Z" transform="translate(-7.364 -53.809)" fill="#fff" />
+                                        <path id="Path_1643" data-name="Path 1643" d="M-488.717,947.877a3.582,3.582,0,0,0-3.577,3.578,3.58,3.58,0,0,0,3.577,3.576,3.581,3.581,0,0,0,3.578-3.576A3.583,3.583,0,0,0-488.717,947.877Zm0,5.692a2.116,2.116,0,0,1-2.113-2.114,2.117,2.117,0,0,1,2.113-2.115,2.117,2.117,0,0,1,2.115,2.115A2.116,2.116,0,0,1-488.717,953.569Z" transform="translate(-7.364 -77.307)" fill="#fff" />
+                                        <path id="Path_1644" data-name="Path 1644" d="M-439.737,960.78l-26.9-.174a.74.74,0,0,0-.737.727.732.732,0,0,0,.727.738l26.9.174h0a.731.731,0,0,0,.732-.729A.732.732,0,0,0-439.737,960.78Z" transform="translate(-24.014 -85.81)" fill="#fff" />
+                                        <path id="Path_1645" data-name="Path 1645" d="M-349.421,972.848a1.245,1.245,0,0,1,.352.869,1.256,1.256,0,0,1-1.254,1.255,1.249,1.249,0,0,1-.87-.353l-1.034,1.035a2.711,2.711,0,0,0,1.9.78,2.72,2.72,0,0,0,2.718-2.717,2.7,2.7,0,0,0-.781-1.9Z" transform="translate(-100.935 -93.297)" fill="#fff" />
+                                        <path id="Path_1646" data-name="Path 1646" d="M-382.637,936.663l1.721,1.72,1.034-1.035-1.815-1.815A13.279,13.279,0,0,1-382.637,936.663Z" transform="translate(-80.62 -69.061)" fill="#fff" />
+                                        <path id="Path_1647" data-name="Path 1647" d="M-385.763,943.209l-1.721-1.721a13.792,13.792,0,0,1-1.137.931l1.824,1.825Z" transform="translate(-76.623 -73.039)" fill="#fff" />
+                                        <path id="Path_1648" data-name="Path 1648" d="M-431.33,893.488c.16-.146.318-.3.472-.449.13-.13.254-.263.377-.4a13.215,13.215,0,0,0,.94-1.13,13.73,13.73,0,0,0-1.317-17.861,13.623,13.623,0,0,0-9.694-4.014,13.626,13.626,0,0,0-9.694,4.014,13.725,13.725,0,0,0,0,19.388,13.618,13.618,0,0,0,9.694,4.015,13.612,13.612,0,0,0,8.085-2.635A13.806,13.806,0,0,0-431.33,893.488ZM-449.212,892a12.263,12.263,0,0,1,0-17.32,12.169,12.169,0,0,1,8.659-3.585,12.173,12.173,0,0,1,8.66,3.585,12.264,12.264,0,0,1,0,17.32,12.171,12.171,0,0,1-8.66,3.586A12.169,12.169,0,0,1-449.212,892Z" transform="translate(-32.776 -25.039)" fill="#fff" />
+                                        <path id="Path_1649" data-name="Path 1649" d="M-426.425,897.483a10.239,10.239,0,0,0,3.018-7.286,10.24,10.24,0,0,0-3.018-7.287,10.239,10.239,0,0,0-7.286-3.017A10.236,10.236,0,0,0-441,882.91a10.237,10.237,0,0,0-3.018,7.287A10.236,10.236,0,0,0-441,897.483a10.239,10.239,0,0,0,7.285,3.017A10.238,10.238,0,0,0-426.425,897.483Zm-13.536-1.036a8.778,8.778,0,0,1-2.59-6.25,8.786,8.786,0,0,1,2.59-6.253,8.782,8.782,0,0,1,6.25-2.588,8.788,8.788,0,0,1,6.251,2.588,8.791,8.791,0,0,1,2.59,6.253,8.783,8.783,0,0,1-2.59,6.25,8.779,8.779,0,0,1-6.251,2.591A8.773,8.773,0,0,1-439.961,896.447Z" transform="translate(-39.617 -31.89)" fill="#fff" />
+                                        <path id="Path_1650" data-name="Path 1650" d="M-381.856,937.766l-.782.781-1.034,1.035-.849.847-1.034,1.035-.765.767a1.8,1.8,0,0,0,.2,2.547,2.092,2.092,0,0,0,1.453.637,1.619,1.619,0,0,0,.65-.136c-.2-.085-.316-.131-.325-.134a.73.73,0,0,1-.434-.939.733.733,0,0,1,.939-.435c.063.024.457.172,1.021.449l2.506-2.506.47-.47c-.278-.563-.425-.958-.449-1.022a.73.73,0,0,1,.435-.937.731.731,0,0,1,.939.433c0,.009.047.122.129.311a1.925,1.925,0,0,0-.518-2.067,2.173,2.173,0,0,0-1.005-.576,1.792,1.792,0,0,0-.448-.06A1.527,1.527,0,0,0-381.856,937.766Zm1.712,1.711-4.464,4.463a.154.154,0,0,1-.061.01.637.637,0,0,1-.419-.207.528.528,0,0,1-.2-.48l4.464-4.464a.173.173,0,0,1,.06-.009.628.628,0,0,1,.418.207A.53.53,0,0,1-380.145,939.477Z" transform="translate(-77.864 -70.258)" fill="#fff" />
+                                        <path id="Path_1651" data-name="Path 1651" d="M-355.164,961.766a2.092,2.092,0,0,0-1.454-.635,1.583,1.583,0,0,0-.487.074,4.182,4.182,0,0,0,.553.037h.054a.73.73,0,0,1,.73.724.728.728,0,0,1-.574.722.807.807,0,0,1,.142.113.525.525,0,0,1,.2.479l-4.463,4.463a.127.127,0,0,1-.061.01.64.64,0,0,1-.419-.206.745.745,0,0,1-.188-.3c0,.033,0,.064,0,.1a.733.733,0,0,1-.732.723h-.008a.733.733,0,0,1-.724-.74c0-.135,0-.269-.013-.4a2.031,2.031,0,0,0,.627,1.65,2.1,2.1,0,0,0,1.454.638,1.533,1.533,0,0,0,1.1-.44l.261-.26,1.034-1.035,1.772-1.771,1.034-1.035.362-.363A1.8,1.8,0,0,0-355.164,961.766Z" transform="translate(-93.993 -86.161)" fill="#fff" />
+                                        <path id="Path_1652" data-name="Path 1652" d="M-354.44,965.2a6,6,0,0,1-1.748-.322l-2.941,2.94a6.006,6.006,0,0,1,.322,1.749Z" transform="translate(-96.324 -88.665)" fill="#fff" />
+                                        <path id="Path_1653" data-name="Path 1653" d="M-374.1,965.045h.008a.733.733,0,0,0,.732-.723c0-.035,0-.066,0-.1,0-.063,0-.121-.006-.182a6,6,0,0,0-.322-1.749,8.154,8.154,0,0,0-2.723-3.617,14.045,14.045,0,0,0-2.506-1.576c-.564-.277-.958-.425-1.021-.449a.734.734,0,0,0-.939.435.731.731,0,0,0,.434.939c.009,0,.129.049.325.134a11.875,11.875,0,0,1,3.707,2.5,5.348,5.348,0,0,1,1.576,3.247c.01.131.015.265.013.4A.733.733,0,0,0-374.1,965.045Z" transform="translate(-81.766 -83.137)" fill="#fff" />
+                                        <path id="Path_1654" data-name="Path 1654" d="M-366.925,943.134a.73.73,0,0,0-.435.937c.024.063.171.459.449,1.022.747,1.518,2.439,4.282,5.194,5.229a6,6,0,0,0,1.748.322c.072,0,.143.008.217.008h.063a.6.6,0,0,0,.15-.018.728.728,0,0,0,.574-.722.73.73,0,0,0-.73-.724h-.054a4.171,4.171,0,0,1-.553-.037c-.115-.014-.226-.033-.336-.054-2.261-.457-3.813-2.581-4.641-4.059-.271-.483-.463-.9-.579-1.16-.082-.189-.126-.3-.129-.311A.731.731,0,0,0-366.925,943.134Z" transform="translate(-90.796 -74.108)" fill="#fff" />
+                                        <path id="Path_1655" data-name="Path 1655" d="M-407.079,911.547a3.252,3.252,0,0,0-3.109-3.246c-.023,0-.043,0-.066,0h-.517v1.464h.444a1.786,1.786,0,0,1,1.784,1.784,1.788,1.788,0,0,1-1.784,1.785h-.444V914.8h.444A3.253,3.253,0,0,0-407.079,911.547Z" transform="translate(-61.825 -50.867)" fill="#fff" />
+                                        <path id="Path_1656" data-name="Path 1656" d="M-423.05,898.167a1.788,1.788,0,0,1-1.785-1.786,1.787,1.787,0,0,1,1.785-1.784h.442v-1.464h-.442a3.252,3.252,0,0,0-3.248,3.248,3.253,3.253,0,0,0,3.248,3.25h.442v-1.464Z" transform="translate(-51.453 -40.735)" fill="#fff" />
+                                        <path id="Path_1657" data-name="Path 1657" d="M-422.608,923.461h-2.959a.731.731,0,0,0-.731.731.731.731,0,0,0,.731.733h2.959v-1.463Z" transform="translate(-51.453 -60.996)" fill="#fff" />
+                                        <path id="Path_1658" data-name="Path 1658" d="M-407.811,894.6a.732.732,0,0,0,.732-.732.732.732,0,0,0-.732-.732h-2.96V894.6Z" transform="translate(-61.825 -40.735)" fill="#fff" />
+                                        <path id="Path_1659" data-name="Path 1659" d="M-414.449,926.395a.732.732,0,0,1-.732-.733v2.229a.732.732,0,0,0,.732.735.732.732,0,0,0,.732-.735v-2.229A.732.732,0,0,1-414.449,926.395Z" transform="translate(-58.879 -62.466)" fill="#fff" />
+                                        <path id="Path_1660" data-name="Path 1660" d="M-414.449,900.753a.732.732,0,0,0,.732-.733V888.01a.731.731,0,0,0-.732-.731.731.731,0,0,0-.732.731v12.01A.732.732,0,0,0-414.449,900.753Z" transform="translate(-58.879 -36.825)" fill="#fff" />
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <div class="space-y-6">
+                                <h5 class="text-2xl font-bold">Mining units</h5>
+                                <p class="text-lg leading-loose">These would be Installed in strategic geographical poins around the world and used to mine both PVC and BTC at the same time, this will help stabilize PVC price on the market, Through mining both PVC and BTC at a cheaper price.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div class="flex flex-col space-y-16 px-8 py-12 hover:bg-brand-primary rounded-lg h-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="96" height="98" viewBox="0 0 96 98">
+                                <g id="Group_996" data-name="Group 996" transform="translate(-771 -1887)">
+                                    <rect id="Rectangle_632" data-name="Rectangle 632" width="96" height="98" rx="18" transform="translate(771 1887)" fill="#faaf6a" />
+                                    <g id="finances-svgrepo-com" transform="translate(775.034 1870.555)">
+                                        <g id="Group_940" data-name="Group 940" transform="translate(60.766 92.809)">
+                                            <path id="Path_1684" data-name="Path 1684" d="M422.6,487.8" transform="translate(-422.6 -487.8)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="66.666" />
+                                        </g>
+                                        <g id="Group_942" data-name="Group 942" transform="translate(10.966 38.445)">
+                                            <g id="Group_941" data-name="Group 941">
+                                                <path id="Path_1685" data-name="Path 1685" d="M45.909,51.143a1.3,1.3,0,0,0,1.536.907,1.26,1.26,0,0,0,.907-1.536L45.51,39.4a1.251,1.251,0,0,0-1.536-.907L32.855,41.331a1.262,1.262,0,1,0,.629,2.444l8.662-2.214L31.1,57.869l-3.763-9.11a1.271,1.271,0,0,0-2.166-.278L11.224,66.761a1.257,1.257,0,0,0,.242,1.766,1.3,1.3,0,0,0,1.766-.242l12.606-16.55,3.823,9.255a1.269,1.269,0,0,0,2.214.23l12.062-17.8Z" transform="translate(-10.966 -38.445)" fill="#fff" />
+                                                <path id="Path_1686" data-name="Path 1686" d="M233.616,164.5c-8.348,0-17.216,2.492-17.216,7.114V194.77c0,4.621,8.868,7.114,17.216,7.114,8.553,0,17.216-2.444,17.216-7.114V171.614C250.831,166.944,242.169,164.5,233.616,164.5ZM248.3,194.77c0,1.875-5.722,4.6-14.7,4.6s-14.7-2.722-14.7-4.6v-3.883c3.23,2.141,9.086,3.279,14.7,3.279,5.734,0,11.505-1.1,14.7-3.218Zm0-7.719c0,1.875-5.722,4.6-14.7,4.6s-14.7-2.722-14.7-4.6v-3.883c3.23,2.141,9.086,3.279,14.7,3.279,5.734,0,11.505-1.1,14.7-3.218Zm0-7.719c0,1.875-5.722,4.6-14.7,4.6s-14.7-2.722-14.7-4.6v-3.883c3.23,2.141,9.086,3.279,14.7,3.279,5.734,0,11.505-1.1,14.7-3.218Zm-14.687-3.121c-8.977,0-14.7-2.722-14.7-4.6s5.722-4.6,14.7-4.6,14.7,2.722,14.7,4.6S242.58,176.211,233.616,176.211Z" transform="translate(-191.546 -149.25)" fill="#fff" />
+                                                <path id="Path_1687" data-name="Path 1687" d="M334.056,195.638a7.067,7.067,0,0,0-2.553-.714v-1.657a1.181,1.181,0,0,1,.932.677l1.972-.145a1.762,1.762,0,0,0-.932-1.016,4.929,4.929,0,0,0-1.972-.46V191.9h-1.125v.423a4.8,4.8,0,0,0-2.154.544,1.353,1.353,0,0,0-.811,1.174,1.414,1.414,0,0,0,.714,1.174,5.569,5.569,0,0,0,2.238.714v1.778a2.434,2.434,0,0,1-.762-.351,1.327,1.327,0,0,1-.472-.581l-2.032.121a2.1,2.1,0,0,0,1.077,1.295,5.379,5.379,0,0,0,2.19.544v.774h1.125v-.8a5.387,5.387,0,0,0,2.371-.641,1.53,1.53,0,0,0,.859-1.295A1.274,1.274,0,0,0,334.056,195.638Zm-3.69-.919a2.061,2.061,0,0,1-.762-.315.541.541,0,0,1-.254-.423.563.563,0,0,1,.278-.448,1.81,1.81,0,0,1,.738-.29Zm2.093,2.746a2.075,2.075,0,0,1-.956.29V196.1a2.64,2.64,0,0,1,1,.315.576.576,0,0,1,.3.484A.63.63,0,0,1,332.459,197.465Z" transform="translate(-288.854 -173.335)" fill="#fff" />
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <div class="space-y-6">
+                                <h5 class="text-2xl font-bold">Asset Based Coin</h5>
+                                <p class="text-lg leading-loose">PVC is an asset based coin, so the price pegged against it would not fall much, since it is backed by tangible assets and has several cash inflows.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div class="flex flex-col space-y-16 px-8 py-12 hover:bg-brand-primary rounded-lg h-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="96" height="98" viewBox="0 0 96 98">
+                                <g id="Group_955" data-name="Group 955" transform="translate(-1328 -1699)">
+                                    <rect id="Rectangle_632" data-name="Rectangle 632" width="96" height="98" rx="18" transform="translate(1328 1699)" fill="#7a86dd" />
+                                    <g id="investment-model-svgrepo-com" transform="translate(1349.125 1709.903)">
+                                        <path id="Path_1691" data-name="Path 1691" d="M118.478,92.316v-.962a1.373,1.373,0,1,0-2.746,0v.995a5.76,5.76,0,0,0,0,11.118v5.772a10.168,10.168,0,0,1-2.728-2.2,1.373,1.373,0,0,0-2.1,1.768,11.344,11.344,0,0,0,4.83,3.376V113.2a1.373,1.373,0,1,0,2.746,0v-.97a5.755,5.755,0,0,0,0-11.167V95.179a8.563,8.563,0,0,1,2.788,1.853,1.373,1.373,0,0,0,1.983-1.9A10.545,10.545,0,0,0,118.478,92.316Zm-4.253,5.593a3.009,3.009,0,0,1,1.507-2.617v5.232A3.007,3.007,0,0,1,114.225,97.909Zm5.867,8.737a3,3,0,0,1-1.613,2.672v-5.342A3,3,0,0,1,120.091,106.646Z" transform="translate(-90.334 -63.781)" fill="#fff" />
+                                        <path
+                                            id="Path_1692"
+                                            data-name="Path 1692"
+                                            d="M48.814,47.5a5.9,5.9,0,0,0-3.884,1.455l-3.921-2.614a16.228,16.228,0,0,0-.83-17.029l2.646-2.117a5.934,5.934,0,1,0-1.908-1.99L38.44,27.185a16.228,16.228,0,0,0-22.153-1.107l-5.262-5.214a5.941,5.941,0,1,0-1.913,1.971l5.234,5.186a16.225,16.225,0,0,0-.9,19.789L8.484,51.948a4.35,4.35,0,1,0,1.929,1.968l4.8-4A16.238,16.238,0,0,0,32.788,53.6l1.224,2.447a3.649,3.649,0,1,0,2.571-1.062h-.03l-1.31-2.619a16.385,16.385,0,0,0,4.24-3.748l3.844,2.563A5.929,5.929,0,1,0,48.814,47.5ZM46.033,19.027a3.183,3.183,0,1,1-3.183,3.183A3.187,3.187,0,0,1,46.033,19.027ZM6.5,57.423a1.6,1.6,0,1,1,1.6-1.6A1.606,1.606,0,0,1,6.5,57.423Zm30.986,1.215a.9.9,0,1,1-.905-.9A.906.906,0,0,1,37.487,58.638ZM5.93,21.017a3.183,3.183,0,1,1,3.183-3.183A3.187,3.187,0,0,1,5.93,21.017ZM26.771,52.009A13.514,13.514,0,1,1,40.284,38.5,13.529,13.529,0,0,1,26.771,52.009Zm22.044,4.6A3.183,3.183,0,1,1,52,53.428,3.187,3.187,0,0,1,48.814,56.611Z"
+                                            transform="translate(0)"
+                                            fill="#fff"
+                                        />
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <div class="space-y-6">
+                                <h5 class="text-2xl font-bold">Direct Investment Initiative</h5>
+                                <p class="text-lg leading-loose">PVC will invest in green energy and innovations that may sound viable. This may help to keep, PVC stable.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div class="flex flex-col space-y-16 px-8 py-12 hover:bg-brand-primary rounded-lg h-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="96" height="98" viewBox="0 0 96 98">
+                                <g id="Group_957" data-name="Group 957" transform="translate(-256 -2266)">
+                                    <rect id="Rectangle_632" data-name="Rectangle 632" width="96" height="98" rx="18" transform="translate(256 2266)" fill="#d65afb" />
+                                    <path
+                                        id="award-svgrepo-com"
+                                        d="M29.692,50.348a.712.712,0,0,1-.086-.005H29.6a.659.659,0,0,1-.089-.017h0a.723.723,0,0,1-.329-.189v0l0,0L19.288,39.979h0v0a.722.722,0,0,1-.177-.315h0v0h0a.712.712,0,0,1-.019-.1h0v0h0v0h0a.767.767,0,0,1,0-.077V.722A.722.722,0,0,1,19.806,0H57.687a.722.722,0,0,1,.722.722v48.9a.722.722,0,0,1-.722.722h-28Zm.722-1.444h26.55V1.444H20.527V38.753h9.165a.722.722,0,0,1,.722.722V48.9Zm-8.9-8.707,7.453,7.652V40.2Zm31.362-4.484H24.749a.722.722,0,1,1,0-1.444h28.13a.722.722,0,1,1,0,1.444Zm0-3.707H24.749a.722.722,0,1,1,0-1.444h28.13a.722.722,0,1,1,0,1.444ZM47.33,26.845a.722.722,0,0,1-.722-.706l-.027-1.2-4.963-.774a.722.722,0,0,1-.588-.893l1.9-7.4a6.775,6.775,0,1,1,11.438-5.441h0a6.766,6.766,0,0,1-2.021,5.392l1.964,9.287a.722.722,0,0,1-.608.865l-6.269.863A.637.637,0,0,1,47.33,26.845Zm.531-9.094.172,7.546,4.7-.646L51.072,16.8a6.743,6.743,0,0,1-2.918.931C48.057,17.741,47.958,17.746,47.861,17.75Zm-5.235,5.115,3.818.6.094-.4-.124-5.407a6.747,6.747,0,0,1-2.24-.832Zm4.986-17.22q-.216,0-.434.018a5.332,5.332,0,1,0,5.745,4.885h0A5.341,5.341,0,0,0,47.612,5.645ZM36.352,17.1h-11.6a.722.722,0,0,1,0-1.444h11.6a.722.722,0,1,1,0,1.444Zm0-4.371h-11.6a.722.722,0,0,1,0-1.444h11.6a.722.722,0,1,1,0,1.444Zm0-4.637h-11.6a.722.722,0,0,1,0-1.444h11.6a.722.722,0,1,1,0,1.444Z"
+                                        transform="translate(263.253 2289.673)"
+                                        fill="#fff"
+                                    />
+                                </g>
+                            </svg>
+
+                            <div class="space-y-6">
+                                <h5 class="text-2xl font-bold">Proof Of Work Algorithm</h5>
+                                <p class="text-lg leading-loose">Miners will form pools and mine PVC and will be awarded, according to how much difficulty level they try to solve to find PVC and the extra hashpower will be used to mine Bitcoin.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div class="flex flex-col space-y-16 px-8 py-12 hover:bg-brand-primary rounded-lg h-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="96" height="98" viewBox="0 0 96 98">
+                                <g id="Group_959" data-name="Group 959" transform="translate(-791 -2266)">
+                                    <rect id="Rectangle_632" data-name="Rectangle 632" width="96" height="98" rx="18" transform="translate(791 2266)" fill="#57d4a5" />
+                                    <g id="community-svgrepo-com" transform="translate(797.075 2286.378)">
+                                        <path id="Path_1677" data-name="Path 1677" d="M110,7.852a4.843,4.843,0,1,0-8.637-3,4.791,4.791,0,0,0,1,3,7.176,7.176,0,0,0-3.372,6.03v5.9a1.753,1.753,0,0,0,1.719,1.678h11.019a1.628,1.628,0,0,0,1.575-1.678v-5.9A7.112,7.112,0,0,0,110,7.852Z" transform="translate(-64.219)" fill="#fff" />
+                                        <path id="Path_1678" data-name="Path 1678" d="M31.083,53.087v-5.9a7.063,7.063,0,0,0-3.246-6.03,4.821,4.821,0,1,0-7.534,0,7.125,7.125,0,0,0-3.316,6.03v5.9A1.6,1.6,0,0,0,18.6,54.7H29.62A1.483,1.483,0,0,0,31.083,53.087Z" transform="translate(0 -26.08)" fill="#fff" />
+                                        <path id="Path_1679" data-name="Path 1679" d="M192.84,41.155a4.819,4.819,0,1,0-7.534,0,7.127,7.127,0,0,0-3.319,6.03v5.9a1.609,1.609,0,0,0,1.62,1.613h11.019a1.479,1.479,0,0,0,1.457-1.613v-5.9A7.061,7.061,0,0,0,192.84,41.155Z" transform="translate(-129.219 -26.081)" fill="#fff" />
+                                        <path id="Path_1680" data-name="Path 1680" d="M110,173.107a4.818,4.818,0,1,0-7.639,0,7.176,7.176,0,0,0-3.372,6.03v5.9a1.705,1.705,0,0,0,1.719,1.623h11.019a1.58,1.58,0,0,0,1.575-1.623v-5.9A7.113,7.113,0,0,0,110,173.107Zm-3.782-4.6a1.6,1.6,0,1,1-1.6,1.6A1.6,1.6,0,0,1,106.216,168.508Zm3.831,14.9h-7.807v-4.273a3.9,3.9,0,0,1,7.807,0Z" transform="translate(-64.219 -129.419)" fill="#fff" />
+                                        <path id="Path_1681" data-name="Path 1681" d="M127.241,113.217v-5.39a1.626,1.626,0,1,0-3.253,0v5.39a1.626,1.626,0,1,0,3.253,0Z" transform="translate(-83.797 -83.171)" fill="#fff" />
+                                        <path id="Path_1682" data-name="Path 1682" d="M49.418,138.569a1.627,1.627,0,0,0-2.237,2.362l8.177,7.743a1.627,1.627,0,0,0,2.237-2.362Z" transform="translate(-23.249 -108.171)" fill="#fff" />
+                                        <path id="Path_1683" data-name="Path 1683" d="M173.965,138.452l-8.155,7.761a1.626,1.626,0,1,0,2.242,2.356l8.155-7.761a1.626,1.626,0,0,0-2.242-2.356Z" transform="translate(-116.155 -108.078)" fill="#fff" />
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <div class="space-y-6">
+                                <h5 class="text-2xl font-bold">Community initiative</h5>
+                                <p class="text-lg leading-loose">PVC wil try to assist in the local communities in which it establishes with focus to help local organisations that work with underprivileged groups in the society.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div class="flex flex-col space-y-16 px-8 py-12 hover:bg-brand-primary rounded-lg h-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="96" height="98" viewBox="0 0 96 98">
+                                <g id="Group_961" data-name="Group 961" transform="translate(-1292 -2266)">
+                                    <rect id="Rectangle_632" data-name="Rectangle 632" width="96" height="98" rx="18" transform="translate(1292 2266)" fill="#d6bf20" />
+                                    <g id="enviromental-protection-svgrepo-com" transform="translate(1266.399 2286.738)">
+                                        <path id="Path_1688" data-name="Path 1688" d="M88.744,285.316H80.077a.9.9,0,0,0,0,1.8h8.667a1.724,1.724,0,0,1,1.652,2.216,3.506,3.506,0,0,0-1.652-.412H77a3.53,3.53,0,0,0-.584-4.218l-9.941-9.941a9.951,9.951,0,0,0-6.218-2.575H47.971a.9.9,0,0,0,0,1.8H60.256a8.166,8.166,0,0,1,4.942,2.047l9.941,9.941a1.724,1.724,0,0,1-2.438,2.438l-8.079-8.079a.9.9,0,0,0-1.276,1.275l8.079,8.079a3.515,3.515,0,0,0,2.432,1.03c.021,0,.041,0,.063,0H88.744a1.724,1.724,0,0,1,0,3.448l-16.554-.015a4.088,4.088,0,0,1-1.584-.411L53.782,283.36l-.032-.019a5.8,5.8,0,0,0-2.481-.65h-3.3a.9.9,0,0,0,0,1.8h3.3a4.076,4.076,0,0,1,1.583.41L69.677,295.3l.032.019a5.811,5.811,0,0,0,2.48.651l16.555.015a3.526,3.526,0,0,0,3.031-5.33,3.527,3.527,0,0,0-3.031-5.333Z" transform="translate(0 -239.455)" fill="#fff" />
+                                        <path id="Path_1689" data-name="Path 1689" d="M250.445,157.093a.9.9,0,1,0,.2,1.793,9.966,9.966,0,0,1,1.1-.061,9.827,9.827,0,0,1,6.336,2.317.9.9,0,1,0,1.164-1.378,11.632,11.632,0,0,0-6.6-2.706V142.465l4.728-4.316a.9.9,0,0,0-1.216-1.332l-3.512,3.206v-5.8a.9.9,0,0,0-1.8,0v5.8l-3.512-3.206a.9.9,0,0,0-1.216,1.332l4.728,4.315v14.592C250.711,157.067,250.577,157.078,250.445,157.093Z" transform="translate(-174.85 -117.286)" fill="#fff" />
+                                        <path id="Path_1690" data-name="Path 1690" d="M178.78,30.269a.9.9,0,0,0,.448-1.747,13.571,13.571,0,1,1,6.767,0,.9.9,0,0,0,.448,1.747,15.376,15.376,0,1,0-7.664,0Z" transform="translate(-105.715)" fill="#fff" />
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <div class="space-y-6">
+                                <h5 class="text-2xl font-bold">Environmental Friendly Approach</h5>
+                                <p class="text-lg leading-loose">PVC will try at all cost to be a Green project and sensitive to the environment.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
+        </section>
 
-            <div class="">
-              <div class="">
-                <img
-                  src="./image/mobile.png"
-                  class="object-cover w-full"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <section class="mt-20 mb-36 px-4 py-2 flex justify-center w-full">
+            <div class="container">
+                <div class="bg-brand-primary rounded-2xl lg:px-28 lg:py-32 px-16 py-24 text-white">
+                    <h2 class="text-center text-5xl font-bold mb-24">30 Days Money Back Guarantee</h2>
 
-    <section class="mt-20 mb-36 px-4 py-2 flex justify-center w-full">
-      <div class="container">
-        <div
-          class="
-            flex flex-col
-            justify-center
-            items-center
-            text-center text-white
-            space-y-8
-            mb-32
-          "
-        >
-          <h2 class="text-center text-5xl font-bold">
-            Frequently Asked Questions
-          </h2>
-          <p class="w-3/4 text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elised
-          </p>
-        </div>
+                    <div class="grid lg:grid-cols-2 gap-36 grid-cols-1">
+                        <div class="">
+                            <div class="space-y-16">
+                                <div class="space-y-8">
+                                    <h4 class="text-3xl font-semibold">Our first priority</h4>
+                                    <p class="text-lg leading-loose">Pivotalcoin will strive to be one of the platforms that serves interests of the people with diligence and transparency in Cryptocurrency and asset based investments. We will make investing in cryptos more enjoyable by marking the value of PVC to a solid asset.</p>
+                                </div>
 
-        <div class="w-2/4 mx-auto text-white">
-          <div class="flex flex-col space-y-10">
-            <div class="border px-12 rounded-lg">
-              <div class="flex items-center justify-between text-xl py-4">
-                <h3 class="text-3xl font-semibold">
-                  How to back up your wallet?
-                </h3>
-                <p class="toggle-input-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14.828"
-                    height="8.414"
-                    viewBox="0 0 14.828 8.414"
-                  >
-                    <g id="chevron-down" transform="translate(1.414 1)">
-                      <path
-                        id="Shape"
-                        d="M0,0,6-6l6,6"
-                        transform="translate(0 6)"
-                        fill="none"
-                        stroke="#fff"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                        stroke-width="2"
-                      />
-                    </g>
-                  </svg>
-                </p>
-              </div>
-              <div class="toggle-content pb-16 pt-4">
-                <p class="font-semibold text-xl">
-                  Use the following instructions to create a backup of your
-                  wallet.
-                </p>
-                <ol class="text-xl leading-relaxed">
-                  <li>1) Close your wallet.</li>
-                  <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
-                  <li>3) Copy the file “wallet.dat” to a safe location.</li>
-                  <li>
-                    4) Please remember to store this "wallet.dat" in your memory
-                    stick, cloud server etc, make sure that you encrypt this, so
-                    that noone can easily see the information in this file as it
-                    is vital for your assets and remember to decrypt and then
-                    export your private key from the cloud server, memory stick
-                    etc to the new Pivotalcoin wallet. Your coins should be
-                    restored after synchronization with the node.
-                  </li>
-                </ol>
-              </div>
-            </div>
+                                <div class="space-y-8">
+                                    <h4 class="text-3xl font-semibold">Pivotalcoin will work with Paypal</h4>
+                                    <p class="text-lg leading-loose">Pivotalcoin will work along with Paypal and has a 30 day moneyback guarantee, we would like to create a spirit of togetherness and trust between PVC and our investors, our customers should feel well cared for and our aims and objectives should be achieved in all angles. Our 30 day moneyback guarantee would allow us to refund our customers when they decide otherwise within 30days, and paypal has even more than 30 days refund time. So all this is in favour of our clients because we trust that Pivotalcoin is going to be one of the big thing not just in theory but practically.</p>
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="border px-12 rounded-lg">
-              <div class="flex items-center justify-between text-xl py-4">
-                <h3 class="text-3xl font-semibold">Mining?</h3>
-                <p class="toggle-input-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14.828"
-                    height="8.414"
-                    viewBox="0 0 14.828 8.414"
-                  >
-                    <g id="chevron-down" transform="translate(1.414 1)">
-                      <path
-                        id="Shape"
-                        d="M0,0,6-6l6,6"
-                        transform="translate(0 6)"
-                        fill="none"
-                        stroke="#fff"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                        stroke-width="2"
-                      />
-                    </g>
-                  </svg>
-                </p>
-              </div>
-              <div class="toggle-content pb-16 pt-4">
-                <p class="font-semibold text-xl">
-                  Use the following instructions to create a backup of your
-                  wallet.
-                </p>
-                <ol class="text-xl leading-relaxed">
-                  <li>1) Close your wallet.</li>
-                  <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
-                  <li>3) Copy the file “wallet.dat” to a safe location.</li>
-                  <li>
-                    4) Please remember to store this "wallet.dat" in your memory
-                    stick, cloud server etc, make sure that you encrypt this, so
-                    that noone can easily see the information in this file as it
-                    is vital for your assets and remember to decrypt and then
-                    export your private key from the cloud server, memory stick
-                    etc to the new Pivotalcoin wallet. Your coins should be
-                    restored after synchronization with the node.
-                  </li>
-                </ol>
-              </div>
+                        <div class="">
+                            <div class="">
+                                <img src="./image/mobile.png" class="object-cover w-full" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="border px-12 rounded-lg">
-              <div class="flex items-center justify-between text-xl py-4">
-                <h3 class="text-3xl font-semibold">Pivotalcoin?</h3>
-                <p class="toggle-input-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14.828"
-                    height="8.414"
-                    viewBox="0 0 14.828 8.414"
-                  >
-                    <g id="chevron-down" transform="translate(1.414 1)">
-                      <path
-                        id="Shape"
-                        d="M0,0,6-6l6,6"
-                        transform="translate(0 6)"
-                        fill="none"
-                        stroke="#fff"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                        stroke-width="2"
-                      />
-                    </g>
-                  </svg>
-                </p>
-              </div>
-              <div class="toggle-content pb-16 pt-4">
-                <p class="font-semibold text-xl">
-                  Use the following instructions to create a backup of your
-                  wallet.
-                </p>
-                <ol class="text-xl leading-relaxed">
-                  <li>1) Close your wallet.</li>
-                  <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
-                  <li>3) Copy the file “wallet.dat” to a safe location.</li>
-                  <li>
-                    4) Please remember to store this "wallet.dat" in your memory
-                    stick, cloud server etc, make sure that you encrypt this, so
-                    that noone can easily see the information in this file as it
-                    is vital for your assets and remember to decrypt and then
-                    export your private key from the cloud server, memory stick
-                    etc to the new Pivotalcoin wallet. Your coins should be
-                    restored after synchronization with the node.
-                  </li>
-                </ol>
-              </div>
-            </div>
+        <section class="mt-20 mb-36 px-4 py-2 flex justify-center w-full">
+            <div class="container">
+                <div class="flex flex-col justify-center items-center text-center text-white space-y-8 mb-32">
+                    <h2 class="text-center text-5xl font-bold">Frequently Asked Questions</h2>
+                    <p class="w-3/4 text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elised</p>
+                </div>
 
-            <div class="border px-12 rounded-lg">
-              <div class="flex items-center justify-between text-xl py-4">
-                <h3 class="text-3xl font-semibold">
-                  How can I complete my KYC/AML?
-                </h3>
-                <p class="toggle-input-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14.828"
-                    height="8.414"
-                    viewBox="0 0 14.828 8.414"
-                  >
-                    <g id="chevron-down" transform="translate(1.414 1)">
-                      <path
-                        id="Shape"
-                        d="M0,0,6-6l6,6"
-                        transform="translate(0 6)"
-                        fill="none"
-                        stroke="#fff"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                        stroke-width="2"
-                      />
-                    </g>
-                  </svg>
-                </p>
-              </div>
-              <div class="toggle-content pb-16 pt-4">
-                <p class="font-semibold text-xl">
-                  Use the following instructions to create a backup of your
-                  wallet.
-                </p>
-                <ol class="text-xl leading-relaxed">
-                  <li>1) Close your wallet.</li>
-                  <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
-                  <li>3) Copy the file “wallet.dat” to a safe location.</li>
-                  <li>
-                    4) Please remember to store this "wallet.dat" in your memory
-                    stick, cloud server etc, make sure that you encrypt this, so
-                    that noone can easily see the information in this file as it
-                    is vital for your assets and remember to decrypt and then
-                    export your private key from the cloud server, memory stick
-                    etc to the new Pivotalcoin wallet. Your coins should be
-                    restored after synchronization with the node.
-                  </li>
-                </ol>
-              </div>
-            </div>
+                <div class="w-2/4 mx-auto text-white">
+                    <div class="flex flex-col space-y-10">
+                        <div class="border px-12 rounded-lg">
+                            <div class="flex items-center justify-between text-xl py-4">
+                                <h3 class="text-3xl font-semibold">How to back up your wallet?</h3>
+                                <p class="toggle-input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14.828" height="8.414" viewBox="0 0 14.828 8.414">
+                                        <g id="chevron-down" transform="translate(1.414 1)">
+                                            <path id="Shape" d="M0,0,6-6l6,6" transform="translate(0 6)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
+                                        </g>
+                                    </svg>
+                                </p>
+                            </div>
+                            <div class="toggle-content pb-16 pt-4">
+                                <p class="font-semibold text-xl">Use the following instructions to create a backup of your wallet.</p>
+                                <ol class="text-xl leading-relaxed">
+                                    <li>1) Close your wallet.</li>
+                                    <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
+                                    <li>3) Copy the file “wallet.dat” to a safe location.</li>
+                                    <li>4) Please remember to store this "wallet.dat" in your memory stick, cloud server etc, make sure that you encrypt this, so that noone can easily see the information in this file as it is vital for your assets and remember to decrypt and then export your private key from the cloud server, memory stick etc to the new Pivotalcoin wallet. Your coins should be restored after synchronization with the node.</li>
+                                </ol>
+                            </div>
+                        </div>
 
-            <div class="border px-12 rounded-lg">
-              <div class="flex items-center justify-between text-xl py-4">
-                <h3 class="text-3xl font-semibold">
-                  Types of Wallets available?
-                </h3>
-                <p class="toggle-input-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14.828"
-                    height="8.414"
-                    viewBox="0 0 14.828 8.414"
-                  >
-                    <g id="chevron-down" transform="translate(1.414 1)">
-                      <path
-                        id="Shape"
-                        d="M0,0,6-6l6,6"
-                        transform="translate(0 6)"
-                        fill="none"
-                        stroke="#fff"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                        stroke-width="2"
-                      />
-                    </g>
-                  </svg>
-                </p>
-              </div>
-              <div class="toggle-content pb-16 pt-4">
-                <p class="font-semibold text-xl">
-                  Use the following instructions to create a backup of your
-                  wallet.
-                </p>
-                <ol class="text-xl leading-relaxed">
-                  <li>1) Close your wallet.</li>
-                  <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
-                  <li>3) Copy the file “wallet.dat” to a safe location.</li>
-                  <li>
-                    4) Please remember to store this "wallet.dat" in your memory
-                    stick, cloud server etc, make sure that you encrypt this, so
-                    that noone can easily see the information in this file as it
-                    is vital for your assets and remember to decrypt and then
-                    export your private key from the cloud server, memory stick
-                    etc to the new Pivotalcoin wallet. Your coins should be
-                    restored after synchronization with the node.
-                  </li>
-                </ol>
-              </div>
-            </div>
+                        <div class="border px-12 rounded-lg">
+                            <div class="flex items-center justify-between text-xl py-4">
+                                <h3 class="text-3xl font-semibold">Mining?</h3>
+                                <p class="toggle-input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14.828" height="8.414" viewBox="0 0 14.828 8.414">
+                                        <g id="chevron-down" transform="translate(1.414 1)">
+                                            <path id="Shape" d="M0,0,6-6l6,6" transform="translate(0 6)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
+                                        </g>
+                                    </svg>
+                                </p>
+                            </div>
+                            <div class="toggle-content pb-16 pt-4">
+                                <p class="font-semibold text-xl">Use the following instructions to create a backup of your wallet.</p>
+                                <ol class="text-xl leading-relaxed">
+                                    <li>1) Close your wallet.</li>
+                                    <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
+                                    <li>3) Copy the file “wallet.dat” to a safe location.</li>
+                                    <li>4) Please remember to store this "wallet.dat" in your memory stick, cloud server etc, make sure that you encrypt this, so that noone can easily see the information in this file as it is vital for your assets and remember to decrypt and then export your private key from the cloud server, memory stick etc to the new Pivotalcoin wallet. Your coins should be restored after synchronization with the node.</li>
+                                </ol>
+                            </div>
+                        </div>
 
-            <div class="border px-12 rounded-lg">
-              <div class="flex items-center justify-between text-xl py-4">
-                <h3 class="text-3xl font-semibold">Renewable energy?</h3>
-                <p class="toggle-input-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14.828"
-                    height="8.414"
-                    viewBox="0 0 14.828 8.414"
-                  >
-                    <g id="chevron-down" transform="translate(1.414 1)">
-                      <path
-                        id="Shape"
-                        d="M0,0,6-6l6,6"
-                        transform="translate(0 6)"
-                        fill="none"
-                        stroke="#fff"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                        stroke-width="2"
-                      />
-                    </g>
-                  </svg>
-                </p>
-              </div>
-              <div class="toggle-content pb-16 pt-4">
-                <p class="font-semibold text-xl">
-                  Use the following instructions to create a backup of your
-                  wallet.
-                </p>
-                <ol class="text-xl leading-relaxed">
-                  <li>1) Close your wallet.</li>
-                  <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
-                  <li>3) Copy the file “wallet.dat” to a safe location.</li>
-                  <li>
-                    4) Please remember to store this "wallet.dat" in your memory
-                    stick, cloud server etc, make sure that you encrypt this, so
-                    that noone can easily see the information in this file as it
-                    is vital for your assets and remember to decrypt and then
-                    export your private key from the cloud server, memory stick
-                    etc to the new Pivotalcoin wallet. Your coins should be
-                    restored after synchronization with the node.
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                        <div class="border px-12 rounded-lg">
+                            <div class="flex items-center justify-between text-xl py-4">
+                                <h3 class="text-3xl font-semibold">Pivotalcoin?</h3>
+                                <p class="toggle-input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14.828" height="8.414" viewBox="0 0 14.828 8.414">
+                                        <g id="chevron-down" transform="translate(1.414 1)">
+                                            <path id="Shape" d="M0,0,6-6l6,6" transform="translate(0 6)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
+                                        </g>
+                                    </svg>
+                                </p>
+                            </div>
+                            <div class="toggle-content pb-16 pt-4">
+                                <p class="font-semibold text-xl">Use the following instructions to create a backup of your wallet.</p>
+                                <ol class="text-xl leading-relaxed">
+                                    <li>1) Close your wallet.</li>
+                                    <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
+                                    <li>3) Copy the file “wallet.dat” to a safe location.</li>
+                                    <li>4) Please remember to store this "wallet.dat" in your memory stick, cloud server etc, make sure that you encrypt this, so that noone can easily see the information in this file as it is vital for your assets and remember to decrypt and then export your private key from the cloud server, memory stick etc to the new Pivotalcoin wallet. Your coins should be restored after synchronization with the node.</li>
+                                </ol>
+                            </div>
+                        </div>
 
-    <footer
-      class="
-        my-12
-        border-t border-[#707070]
-        pt-16
-        px-4
-        py-2
-        flex
-        justify-center
-        w-full
-      "
-    >
-      <div class="container">
-        <div
-          class="
-            grid grid-cols-1
-            md:grid-cols-2
-            xl:grid-cols-8
-            gap-12
-            items-start
-            text-white
-          "
-        >
-          <div class="xl:col-span-2 grid-cols-none">
-            <div class="flex items-center space-x-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="71"
-                height="71"
-                viewBox="0 0 71 71"
-              >
-                <defs>
-                  <pattern
-                    id="pattern"
-                    width="1"
-                    height="1"
-                    viewBox="13.986 13.292 43.028 43.028"
-                  >
-                    <image
-                      preserveAspectRatio="xMidYMid slice"
-                      width="71"
-                      height="71"
-                      xlink:href="data:image/jpeg;base64,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"
-                    />
-                  </pattern>
-                </defs>
-                <circle
-                  id="Ellipse_277"
-                  data-name="Ellipse 277"
-                  cx="35.5"
-                  cy="35.5"
-                  r="35.5"
-                  fill="url(#pattern)"
-                />
-              </svg>
-              <h1 class="text-4xl text-white font-semibold">PivotalCoin</h1>
-            </div>
-            <div class="py-8">
-              <p class="leading-loose text-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                pretium pretium tempor. Ut eget imperdiet neque. In volutpat
-                ante semper diam molestie, et aliquam erat laoreet.
-              </p>
-            </div>
+                        <div class="border px-12 rounded-lg">
+                            <div class="flex items-center justify-between text-xl py-4">
+                                <h3 class="text-3xl font-semibold">How can I complete my KYC/AML?</h3>
+                                <p class="toggle-input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14.828" height="8.414" viewBox="0 0 14.828 8.414">
+                                        <g id="chevron-down" transform="translate(1.414 1)">
+                                            <path id="Shape" d="M0,0,6-6l6,6" transform="translate(0 6)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
+                                        </g>
+                                    </svg>
+                                </p>
+                            </div>
+                            <div class="toggle-content pb-16 pt-4">
+                                <p class="font-semibold text-xl">Use the following instructions to create a backup of your wallet.</p>
+                                <ol class="text-xl leading-relaxed">
+                                    <li>1) Close your wallet.</li>
+                                    <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
+                                    <li>3) Copy the file “wallet.dat” to a safe location.</li>
+                                    <li>4) Please remember to store this "wallet.dat" in your memory stick, cloud server etc, make sure that you encrypt this, so that noone can easily see the information in this file as it is vital for your assets and remember to decrypt and then export your private key from the cloud server, memory stick etc to the new Pivotalcoin wallet. Your coins should be restored after synchronization with the node.</li>
+                                </ol>
+                            </div>
+                        </div>
 
-            <div class="flex items-center space-x-8">
-              <div class="">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                >
-                  <g id="Facebook" transform="translate(0)">
-                    <path
-                      id="Combined_Shape"
-                      data-name="Combined Shape"
-                      d="M16,32A16,16,0,0,1,4.686,4.688,16,16,0,1,1,27.313,27.313,15.894,15.894,0,0,1,16,32ZM14.065,16.7v8.7h3.6V16.7h2.4l.319-3H17.668l0-1.5c0-.767.056-1.2,1.2-1.2h1.5V8h-2.4c-2.662,0-3.9,1.24-3.9,3.9v1.8h-1.8v3Z"
-                      transform="translate(0 0)"
-                      fill="#fff"
-                    />
-                  </g>
-                </svg>
-              </div>
-              <div class="">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                >
-                  <g id="Twitter" transform="translate(0.201)">
-                    <path
-                      id="Combined_Shape"
-                      data-name="Combined Shape"
-                      d="M16,32A16,16,0,0,1,4.686,4.688,16,16,0,1,1,27.313,27.313,15.9,15.9,0,0,1,16,32ZM8.513,14.148c-.017,0-.028,0-.032.009a4.032,4.032,0,0,0,.4,1.515,3.62,3.62,0,0,0,1.533,1.445l.549.26-.65.012c-.4,0-.546,0-.591.064-.028.037-.015.1.009.185a3.383,3.383,0,0,0,2.093,1.853l.693.236-.6.363a6.353,6.353,0,0,1-3,.836,3.248,3.248,0,0,0-.919.09,8.485,8.485,0,0,0,2.161.994,9,9,0,0,0,2.664.391A9.328,9.328,0,0,0,17.5,21.175a9.781,9.781,0,0,0,3.727-4.386A11.685,11.685,0,0,0,21.99,13.4c0-.525.037-.593.661-1.209a7.473,7.473,0,0,0,.783-.871c.041-.078.065-.128.052-.15s-.017-.014-.036-.014a2.558,2.558,0,0,0-.486.143,3.171,3.171,0,0,1-.785.218c-.05,0-.08-.012-.09-.036-.024-.055.056-.178.258-.4a3.269,3.269,0,0,0,.761-1.209c0-.008-.01-.01-.018-.01a1.179,1.179,0,0,0-.339.134,6.357,6.357,0,0,1-.987.386l-.6.191-.549-.373a4.439,4.439,0,0,0-.952-.5,3.514,3.514,0,0,0-.893-.105,3.406,3.406,0,0,0-1.065.151A3.226,3.226,0,0,0,15.52,13l.035.554-.56-.068a9.122,9.122,0,0,1-5.326-2.62l-.739-.735-.19.543a3.27,3.27,0,0,0,.693,3.344c.2.215.286.34.263.395-.01.022-.037.033-.083.033a2.243,2.243,0,0,1-.6-.167A2.249,2.249,0,0,0,8.513,14.148Z"
-                      transform="translate(-0.201 0)"
-                      fill="#fff"
-                    />
-                  </g>
-                </svg>
-              </div>
-              <div class="">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                >
-                  <g id="Youtube" transform="translate(0.086)">
-                    <path
-                      id="Combined_Shape"
-                      data-name="Combined Shape"
-                      d="M16,32A16,16,0,0,1,4.687,4.688,16,16,0,1,1,27.314,27.313,15.891,15.891,0,0,1,16,32Zm0-21.865a49.977,49.977,0,0,0-6.669.365,2.162,2.162,0,0,0-1.507,1.549,23.553,23.553,0,0,0-.357,4.22,23.535,23.535,0,0,0,.357,4.218,2.16,2.16,0,0,0,1.507,1.548A49.578,49.578,0,0,0,16,22.4a49.549,49.549,0,0,0,6.667-.368,2.166,2.166,0,0,0,1.509-1.548,23.539,23.539,0,0,0,.357-4.218,23.557,23.557,0,0,0-.357-4.22A2.17,2.17,0,0,0,22.668,10.5,49.948,49.948,0,0,0,16,10.135Z"
-                      transform="translate(-0.086 0)"
-                      fill="#fff"
-                    />
-                    <path
-                      id="Fill_2"
-                      data-name="Fill 2"
-                      d="M0,5.333V0L4.267,2.667Z"
-                      transform="translate(14.4 13.866)"
-                      fill="#fff"
-                    />
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div class="">
-            <h4 class="text-3xl font-semibold pb-4">Company</h4>
-            <ul class="space-y-4 text-xl">
-              <li><a href="">About us</a></li>
-              <li><a href="">Store</a></li>
-              <li><a href="">Whitepaper</a></li>
-            </ul>
-          </div>
-          <div class="">
-            <h4 class="text-3xl font-semibold pb-4">Support</h4>
-            <ul class="space-y-4 text-xl">
-              <li><a href="">Contact us</a></li>
-              <li><a href="">Privacy Policy</a></li>
-              <li><a href="">FAQ</a></li>
-            </ul>
-          </div>
-          <div class="xl:col-span-2 grid-cols-none">
-            <h4 class="text-3xl font-semibold pb-4">Pages</h4>
-            <ul class="space-y-4 text-xl">
-              <li><a href="">Our Steps ahead</a></li>
-              <li><a href="">Current Challenges</a></li>
-              <li><a href="">Digital Energy Consumption</a></li>
-              <li><a href="">Global Electricity Market</a></li>
-              <li><a href="">Price Distortions</a></li>
-              <li><a href="">Pivotalcoin Context</a></li>
-              <li><a href="">Environmental</a></li>
-            </ul>
-          </div>
-          <div class="xl:col-span-2 col-span-full">
-            <h4 class="text-3xl font-semibold pb-4 text-white">
-              Let's Stay in Touch
-            </h4>
-            <p class="text-lg">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit.
-            </p>
-            <div class="relative my-6">
-              <input
-                type="email"
-                class="
-                  w-full
-                  rounded-3xl
-                  text-xl
-                  pl-16
-                  pr-4
-                  py-4
-                  text-black
-                  focus:outline-none
-                "
-                placeholder="Email Address"
-              />
-              <div class="absolute top-4 left-6">
-                <svg
-                  id="Group_235"
-                  data-name="Group 235"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 15.174 11.108"
-                >
-                  <path
-                    id="Path_908"
-                    data-name="Path 908"
-                    d="M18.28,17.058H6.895A1.9,1.9,0,0,0,5,18.953v7.319a1.9,1.9,0,0,0,1.895,1.895H18.279a1.9,1.9,0,0,0,1.895-1.895V18.953A1.9,1.9,0,0,0,18.28,17.058Zm-11.385.537H18.279a1.357,1.357,0,0,1,1.145.631L13.585,23.74a1.473,1.473,0,0,1-2,0L5.75,18.225A1.357,1.357,0,0,1,6.895,17.595ZM5.55,26.45a1.381,1.381,0,0,1-.013-.178V18.953a1.354,1.354,0,0,1,.013-.178l4.063,3.838Zm12.73,1.18H6.895A1.357,1.357,0,0,1,5.75,27L10,22.981l1.217,1.149a2.015,2.015,0,0,0,2.733,0l1.216-1.149L19.424,27A1.356,1.356,0,0,1,18.28,27.629Zm1.358-8.677v7.319a1.379,1.379,0,0,1-.013.178l-4.063-3.838,4.064-3.837A1.409,1.409,0,0,1,19.637,18.953Z"
-                    transform="translate(-5 -17.058)"
-                    fill="#8d8d8d"
-                  />
-                </svg>
-              </div>
+                        <div class="border px-12 rounded-lg">
+                            <div class="flex items-center justify-between text-xl py-4">
+                                <h3 class="text-3xl font-semibold">Types of Wallets available?</h3>
+                                <p class="toggle-input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14.828" height="8.414" viewBox="0 0 14.828 8.414">
+                                        <g id="chevron-down" transform="translate(1.414 1)">
+                                            <path id="Shape" d="M0,0,6-6l6,6" transform="translate(0 6)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
+                                        </g>
+                                    </svg>
+                                </p>
+                            </div>
+                            <div class="toggle-content pb-16 pt-4">
+                                <p class="font-semibold text-xl">Use the following instructions to create a backup of your wallet.</p>
+                                <ol class="text-xl leading-relaxed">
+                                    <li>1) Close your wallet.</li>
+                                    <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
+                                    <li>3) Copy the file “wallet.dat” to a safe location.</li>
+                                    <li>4) Please remember to store this "wallet.dat" in your memory stick, cloud server etc, make sure that you encrypt this, so that noone can easily see the information in this file as it is vital for your assets and remember to decrypt and then export your private key from the cloud server, memory stick etc to the new Pivotalcoin wallet. Your coins should be restored after synchronization with the node.</li>
+                                </ol>
+                            </div>
+                        </div>
 
-              <div class="absolute -top-8 -right-10">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  width="145"
-                  height="145"
-                  viewBox="0 0 121 121"
-                >
-                  <defs>
-                    <filter
-                      id="Rectangle_12"
-                      x="0"
-                      y="0"
-                      width="121"
-                      height="121"
-                      filterUnits="userSpaceOnUse"
-                    >
-                      <feOffset dx="5" dy="10" input="SourceAlpha" />
-                      <feGaussianBlur stdDeviation="15" result="blur" />
-                      <feFlood flood-color="#810cfb" flood-opacity="0.4" />
-                      <feComposite operator="in" in2="blur" />
-                      <feComposite in="SourceGraphic" />
-                    </filter>
-                  </defs>
-                  <g
-                    id="Group_238"
-                    data-name="Group 238"
-                    transform="translate(40 35)"
-                  >
-                    <g
-                      transform="matrix(1, 0, 0, 1, -40, -35)"
-                      filter="url(#Rectangle_12)"
-                    >
-                      <rect
-                        id="Rectangle_12-2"
-                        data-name="Rectangle 12"
-                        width="31"
-                        height="31"
-                        rx="15.5"
-                        transform="translate(40 35)"
-                        fill="#810cfb"
-                      />
-                    </g>
-                    <g
-                      id="Group_236"
-                      data-name="Group 236"
-                      transform="translate(8.178 10.21)"
-                    >
-                      <path
-                        id="Path_909"
-                        data-name="Path 909"
-                        d="M6.116,9.755,4.349,10.933a.344.344,0,0,1-.511-.275V8.066l7.227-5.42-8.641,4.6L.185,5.709A.468.468,0,0,1,.3,4.884L14.836-.379c.2-.079.354.157.236.354L8.512,10.815a.484.484,0,0,1-.668.118Z"
-                        transform="translate(0.012 0.395)"
-                        fill="#fff"
-                        fill-rule="evenodd"
-                      />
-                    </g>
-                  </g>
-                </svg>
-              </div>
+                        <div class="border px-12 rounded-lg">
+                            <div class="flex items-center justify-between text-xl py-4">
+                                <h3 class="text-3xl font-semibold">Renewable energy?</h3>
+                                <p class="toggle-input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14.828" height="8.414" viewBox="0 0 14.828 8.414">
+                                        <g id="chevron-down" transform="translate(1.414 1)">
+                                            <path id="Shape" d="M0,0,6-6l6,6" transform="translate(0 6)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
+                                        </g>
+                                    </svg>
+                                </p>
+                            </div>
+                            <div class="toggle-content pb-16 pt-4">
+                                <p class="font-semibold text-xl">Use the following instructions to create a backup of your wallet.</p>
+                                <ol class="text-xl leading-relaxed">
+                                    <li>1) Close your wallet.</li>
+                                    <li>2) Openthefolder “%APPDATA%\pivotalcoin\”.</li>
+                                    <li>3) Copy the file “wallet.dat” to a safe location.</li>
+                                    <li>4) Please remember to store this "wallet.dat" in your memory stick, cloud server etc, make sure that you encrypt this, so that noone can easily see the information in this file as it is vital for your assets and remember to decrypt and then export your private key from the cloud server, memory stick etc to the new Pivotalcoin wallet. Your coins should be restored after synchronization with the node.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="text-center text-white text-xl font-semibold pt-20">
-          Copyright &copy; 2020 All Rights Reserved
-        </div>
-      </div>
-    </footer>
-  </body>
+        </section>
+
+        <footer class="my-12 border-t border-[#707070] pt-16 px-4 py-2 flex justify-center w-full">
+            <div class="container">
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-8 gap-12 items-start text-white">
+                    <div class="xl:col-span-2 grid-cols-none">
+                        <div class="flex items-center space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="71" height="71" viewBox="0 0 71 71">
+                                <defs>
+                                    <pattern id="pattern" width="1" height="1" viewBox="13.986 13.292 43.028 43.028">
+                                        <image
+                                            preserveAspectRatio="xMidYMid slice"
+                                            width="71"
+                                            height="71"
+                                            xlink:href="data:image/jpeg;base64,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"
+                                        />
+                                    </pattern>
+                                </defs>
+                                <circle id="Ellipse_277" data-name="Ellipse 277" cx="35.5" cy="35.5" r="35.5" fill="url(#pattern)" />
+                            </svg>
+                            <h1 class="text-4xl text-white font-semibold">PivotalCoin</h1>
+                        </div>
+                        <div class="py-8">
+                            <p class="leading-loose text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium pretium tempor. Ut eget imperdiet neque. In volutpat ante semper diam molestie, et aliquam erat laoreet.</p>
+                        </div>
+
+                        <div class="flex items-center space-x-8">
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                    <g id="Facebook" transform="translate(0)">
+                                        <path id="Combined_Shape" data-name="Combined Shape" d="M16,32A16,16,0,0,1,4.686,4.688,16,16,0,1,1,27.313,27.313,15.894,15.894,0,0,1,16,32ZM14.065,16.7v8.7h3.6V16.7h2.4l.319-3H17.668l0-1.5c0-.767.056-1.2,1.2-1.2h1.5V8h-2.4c-2.662,0-3.9,1.24-3.9,3.9v1.8h-1.8v3Z" transform="translate(0 0)" fill="#fff" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                    <g id="Twitter" transform="translate(0.201)">
+                                        <path
+                                            id="Combined_Shape"
+                                            data-name="Combined Shape"
+                                            d="M16,32A16,16,0,0,1,4.686,4.688,16,16,0,1,1,27.313,27.313,15.9,15.9,0,0,1,16,32ZM8.513,14.148c-.017,0-.028,0-.032.009a4.032,4.032,0,0,0,.4,1.515,3.62,3.62,0,0,0,1.533,1.445l.549.26-.65.012c-.4,0-.546,0-.591.064-.028.037-.015.1.009.185a3.383,3.383,0,0,0,2.093,1.853l.693.236-.6.363a6.353,6.353,0,0,1-3,.836,3.248,3.248,0,0,0-.919.09,8.485,8.485,0,0,0,2.161.994,9,9,0,0,0,2.664.391A9.328,9.328,0,0,0,17.5,21.175a9.781,9.781,0,0,0,3.727-4.386A11.685,11.685,0,0,0,21.99,13.4c0-.525.037-.593.661-1.209a7.473,7.473,0,0,0,.783-.871c.041-.078.065-.128.052-.15s-.017-.014-.036-.014a2.558,2.558,0,0,0-.486.143,3.171,3.171,0,0,1-.785.218c-.05,0-.08-.012-.09-.036-.024-.055.056-.178.258-.4a3.269,3.269,0,0,0,.761-1.209c0-.008-.01-.01-.018-.01a1.179,1.179,0,0,0-.339.134,6.357,6.357,0,0,1-.987.386l-.6.191-.549-.373a4.439,4.439,0,0,0-.952-.5,3.514,3.514,0,0,0-.893-.105,3.406,3.406,0,0,0-1.065.151A3.226,3.226,0,0,0,15.52,13l.035.554-.56-.068a9.122,9.122,0,0,1-5.326-2.62l-.739-.735-.19.543a3.27,3.27,0,0,0,.693,3.344c.2.215.286.34.263.395-.01.022-.037.033-.083.033a2.243,2.243,0,0,1-.6-.167A2.249,2.249,0,0,0,8.513,14.148Z"
+                                            transform="translate(-0.201 0)"
+                                            fill="#fff"
+                                        />
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                    <g id="Youtube" transform="translate(0.086)">
+                                        <path id="Combined_Shape" data-name="Combined Shape" d="M16,32A16,16,0,0,1,4.687,4.688,16,16,0,1,1,27.314,27.313,15.891,15.891,0,0,1,16,32Zm0-21.865a49.977,49.977,0,0,0-6.669.365,2.162,2.162,0,0,0-1.507,1.549,23.553,23.553,0,0,0-.357,4.22,23.535,23.535,0,0,0,.357,4.218,2.16,2.16,0,0,0,1.507,1.548A49.578,49.578,0,0,0,16,22.4a49.549,49.549,0,0,0,6.667-.368,2.166,2.166,0,0,0,1.509-1.548,23.539,23.539,0,0,0,.357-4.218,23.557,23.557,0,0,0-.357-4.22A2.17,2.17,0,0,0,22.668,10.5,49.948,49.948,0,0,0,16,10.135Z" transform="translate(-0.086 0)" fill="#fff" />
+                                        <path id="Fill_2" data-name="Fill 2" d="M0,5.333V0L4.267,2.667Z" transform="translate(14.4 13.866)" fill="#fff" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <h4 class="text-3xl font-semibold pb-4">Company</h4>
+                        <ul class="space-y-4 text-xl">
+                            <li><a href="">About us</a></li>
+                            <li><a href="">Store</a></li>
+                            <li><a href="">Whitepaper</a></li>
+                        </ul>
+                    </div>
+                    <div class="">
+                        <h4 class="text-3xl font-semibold pb-4">Support</h4>
+                        <ul class="space-y-4 text-xl">
+                            <li><a href="">Contact us</a></li>
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="xl:col-span-2 grid-cols-none">
+                        <h4 class="text-3xl font-semibold pb-4">Pages</h4>
+                        <ul class="space-y-4 text-xl">
+                            <li><a href="">Our Steps ahead</a></li>
+                            <li><a href="">Current Challenges</a></li>
+                            <li><a href="">Digital Energy Consumption</a></li>
+                            <li><a href="">Global Electricity Market</a></li>
+                            <li><a href="">Price Distortions</a></li>
+                            <li><a href="">Pivotalcoin Context</a></li>
+                            <li><a href="">Environmental</a></li>
+                        </ul>
+                    </div>
+                    <div class="xl:col-span-2 col-span-full">
+                        <h4 class="text-3xl font-semibold pb-4 text-white">Let's Stay in Touch</h4>
+                        <p class="text-lg">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <div class="relative my-6">
+                            <input type="email" class="w-full rounded-3xl text-xl pl-16 pr-4 py-4 text-black focus:outline-none" placeholder="Email Address" />
+                            <div class="absolute top-4 left-6">
+                                <svg id="Group_235" data-name="Group 235" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 15.174 11.108">
+                                    <path id="Path_908" data-name="Path 908" d="M18.28,17.058H6.895A1.9,1.9,0,0,0,5,18.953v7.319a1.9,1.9,0,0,0,1.895,1.895H18.279a1.9,1.9,0,0,0,1.895-1.895V18.953A1.9,1.9,0,0,0,18.28,17.058Zm-11.385.537H18.279a1.357,1.357,0,0,1,1.145.631L13.585,23.74a1.473,1.473,0,0,1-2,0L5.75,18.225A1.357,1.357,0,0,1,6.895,17.595ZM5.55,26.45a1.381,1.381,0,0,1-.013-.178V18.953a1.354,1.354,0,0,1,.013-.178l4.063,3.838Zm12.73,1.18H6.895A1.357,1.357,0,0,1,5.75,27L10,22.981l1.217,1.149a2.015,2.015,0,0,0,2.733,0l1.216-1.149L19.424,27A1.356,1.356,0,0,1,18.28,27.629Zm1.358-8.677v7.319a1.379,1.379,0,0,1-.013.178l-4.063-3.838,4.064-3.837A1.409,1.409,0,0,1,19.637,18.953Z" transform="translate(-5 -17.058)" fill="#8d8d8d" />
+                                </svg>
+                            </div>
+
+                            <div class="absolute -top-8 -right-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="145" height="145" viewBox="0 0 121 121">
+                                    <defs>
+                                        <filter id="Rectangle_12" x="0" y="0" width="121" height="121" filterUnits="userSpaceOnUse">
+                                            <feOffset dx="5" dy="10" input="SourceAlpha" />
+                                            <feGaussianBlur stdDeviation="15" result="blur" />
+                                            <feFlood flood-color="#810cfb" flood-opacity="0.4" />
+                                            <feComposite operator="in" in2="blur" />
+                                            <feComposite in="SourceGraphic" />
+                                        </filter>
+                                    </defs>
+                                    <g id="Group_238" data-name="Group 238" transform="translate(40 35)">
+                                        <g transform="matrix(1, 0, 0, 1, -40, -35)" filter="url(#Rectangle_12)">
+                                            <rect id="Rectangle_12-2" data-name="Rectangle 12" width="31" height="31" rx="15.5" transform="translate(40 35)" fill="#810cfb" />
+                                        </g>
+                                        <g id="Group_236" data-name="Group 236" transform="translate(8.178 10.21)">
+                                            <path id="Path_909" data-name="Path 909" d="M6.116,9.755,4.349,10.933a.344.344,0,0,1-.511-.275V8.066l7.227-5.42-8.641,4.6L.185,5.709A.468.468,0,0,1,.3,4.884L14.836-.379c.2-.079.354.157.236.354L8.512,10.815a.484.484,0,0,1-.668.118Z" transform="translate(0.012 0.395)" fill="#fff" fill-rule="evenodd" />
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-white text-xl font-semibold pt-20">Copyright &copy; 2020 All Rights Reserved</div>
+            </div>
+        </footer>
+    </body>
 </html>
