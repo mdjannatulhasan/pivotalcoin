@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pivotalcoin</title>
+    <link rel="stylesheet" href="/src/styles/style.css" />
+  </head>
+  <body class="bg-brand font-sans">
+    <header
+      class="text-white leading-loose flex justify-center w-full px-4 py-2"
+    >
+      <div class="container">
+        <nav class="py-4 flex justify-between items-center">
+          <a href="">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="70"
+              height="70"
+              viewBox="0 0 71 71"
+            >
+              <defs>
+                <pattern
+                  id="pattern"
+                  width="1"
+                  height="1"
+                  viewBox="13.986 13.292 43.028 43.028"
+                >
+                  <image
+                    preserveAspectRatio="xMidYMid slice"
+                    width="71"
+                    height="71"
+                    xlink:href="data:image/jpeg;base64,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"
+                  />
+                </pattern>
+              </defs>
+              <circle
+                id="Ellipse_277"
+                data-name="Ellipse 277"
+                cx="35.5"
+                cy="35.5"
+                r="35.5"
+                fill="url(#pattern)"
+              />
+            </svg>
+          </a>
+
+          <div class="hidden lg:block">
+            <div class="flex flex-row justify-center my-auto space-x-6">
+              <a
+                href="#"
+                class="px-2 font-semibold text-lg hover:text-brand-secondary"
+              >
+                Home
+              </a>
+              <a
+                href="#"
+                class="px-2 font-semibold text-lg hover:text-brand-secondary"
+              >
+                Knowledgebank
+              </a>
+              <a
+                href="#"
+                class="px-2 font-semibold text-lg hover:text-brand-secondary"
+              >
+                Whitepaper
+              </a>
+              <a
+                href="#"
+                class="px-2 font-semibold text-lg hover:text-brand-secondary"
+              >
+                About us
+              </a>
+              <a
+                href="#"
+                class="px-2 font-semibold text-lg hover:text-brand-secondary"
+              >
+                Contact us
+              </a>
+            </div>
+          </div>
+          <div class="hidden lg:block">
+            <a
+              href="#"
+              class="
+                px-12
+                py-2
+                text-xl
+                font-semibold
+                bg-white
+                rounded-full
+                text-black
+              "
+            >
+              Support
+            </a>
+          </div>
+
+          <button type="button" class="focus:outline-none lg:hidden">
+            <svg
+              class="h-6 w-6 fill-current text-gray-300 hover:text-gray-100"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+              />
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <div
+      class="w-full bg-bannerBg bg-no-repeat relative bg-cover bg-center py-16"
+    >
+      <!-- <img src="./image/banner.png" alt="" class="object-fill" /> -->
+
+      <div class="flex flex-col items-center justify-center">
+        <h2 class="text-4xl font-bold text-white">Contact Us</h2>
+        <nav class="pt-4">
+          <ul class="flex items-center space-x-2 justify-center text-white">
+            <li class="text-lg"><a href="#">Home</a></li>
+            <li class="text-lg">&#47;</li>
+            <li class="text-lg">Contact Us</li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <section class="mt-20 mb-36 flex justify-center w-full">
+      <div class="container">
+        <div
+          class="
+            bg-brand-primary
+            rounded-2xl
+            lg:px-28
+            lg:py-32
+            px-16
+            py-24
+            text-white
+          "
+        >
+          <div
+            class="
+              grid
+              xl:grid-cols-3
+              justify-center
+              items-center
+              grid-cols-1
+              xl:gap-10
+              gap-2
+            "
+          >
+            <div class="xl:col-span-2 grid-cols-none">
+              <div class="">
+                <h3 class="text-4xl font-bold pb-6">
+                  FEEl FREE TO DROP US A MESSAGE
+                </h3>
+                <p class="text-2xl font-semibold">
+                  There are many variations of passages of Lorem Ipsum
+                  available, but the majority have suffered alteration in some
+                  form, by injected humour.
+                </p>
+
+                <form
+                  action=""
+                  class="
+                    my-12
+                    grid
+                    lg:grid-cols-2
+                    grid-cols-1
+                    gap-6
+                    text-black text-lg
+                  "
+                >
+                  <div class="">
+                    <input
+                      class="w-full px-6 py-4 rounded-lg focus:outline-none"
+                      type="text"
+                      placeholder="FIRST NAME"
+                    />
+                  </div>
+                  <div class="">
+                    <input
+                      class="w-full px-6 py-4 rounded-lg focus:outline-none"
+                      type="text"
+                      placeholder="LAST NAME"
+                    />
+                  </div>
+
+                  <div class="">
+                    <input
+                      class="w-full px-6 py-4 rounded-lg focus:outline-none"
+                      type="email"
+                      placeholder="EMAIL"
+                    />
+                  </div>
+                  <div class="">
+                    <input
+                      class="w-full px-6 py-4 rounded-lg focus:outline-none"
+                      type="number"
+                      placeholder="PHONE"
+                    />
+                  </div>
+
+                  <div class="lg:col-span-2 grid-cols-none">
+                    <textarea
+                      class="w-full px-6 py-4 rounded-lg focus:outline-none"
+                      rows="8"
+                      placeholder="MESSAGE"
+                    ></textarea>
+                  </div>
+
+                  <div class="">
+                    <button
+                      class="
+                        w-full
+                        lg:text-2xl
+                        text-xl
+                        bg-brand-secondary
+                        text-white
+                        py-4
+                        rounded-lg
+                        focus:outline-none
+                      "
+                    >
+                      SEND MESSAGE
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <div
+                class="
+                  bg-white
+                  w-full
+                  rounded-lg
+                  px-12
+                  py-16
+                  text-black
+                  space-y-10
+                "
+              >
+                <div class="flex items-start space-x-6">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="23.692"
+                    height="33.847"
+                    viewBox="0 0 23.692 33.847"
+                  >
+                    <path
+                      id="Path_26895"
+                      data-name="Path 26895"
+                      d="M740.846,3310.077a4.23,4.23,0,1,1,4.23-4.231A4.236,4.236,0,0,1,740.846,3310.077Zm0-12.693a8.471,8.471,0,0,0-8.461,8.462c0,5.287,5.918,13.454,8.461,16.72,2.542-3.225,8.461-11.311,8.461-16.72A8.471,8.471,0,0,0,740.846,3297.384Zm0,30.462,0,0a77.163,77.163,0,0,1-5.921-7.666c-2.7-4.005-5.923-9.742-5.923-14.332a11.846,11.846,0,1,1,23.692,0c0,4.59-3.22,10.327-5.923,14.332a76.871,76.871,0,0,1-5.923,7.666Z"
+                      transform="translate(-729 -3294)"
+                      fill="#810cfb"
+                    />
+                  </svg>
+                  <div class="space-y-2 -mt-2">
+                    <h5 class="text-xl font-semibold">ADDRESS</h5>
+                    <p class="text-lg font-semibold text-[#707070]">
+                      Holmedalsgården 3,5003 Bergen
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-6">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="29.032"
+                    height="29.032"
+                    viewBox="0 0 29.032 29.032"
+                  >
+                    <path
+                      id="Icon_awesome-phone"
+                      data-name="Icon awesome-phone"
+                      d="M1.054,1.395,6.951.034A1.37,1.37,0,0,1,8.51.822l2.722,6.351a1.357,1.357,0,0,1-.391,1.588L7.4,11.573A21.014,21.014,0,0,0,17.452,21.62l2.812-3.436a1.359,1.359,0,0,1,1.588-.391L28.2,20.514A1.377,1.377,0,0,1,29,22.079l-1.361,5.9a1.36,1.36,0,0,1-1.327,1.055A26.307,26.307,0,0,1,0,2.722,1.359,1.359,0,0,1,1.054,1.395Z"
+                      transform="translate(0.001 0.001)"
+                      fill="#810cfb"
+                    />
+                  </svg>
+
+                  <div class="space-y-2 -mt-2">
+                    <h5 class="text-xl font-semibold">PHONE NUMBERS</h5>
+                    <p class="text-lg font-semibold text-[#707070]">
+                      <a href="">+4797606297</a>
+                    </p>
+                    <p class="text-lg font-semibold text-[#707070]">
+                      <a href="">+4797606297</a>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-6">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="29.444"
+                    height="23.555"
+                    viewBox="0 0 29.444 23.555"
+                  >
+                    <path
+                      id="Icon_material-email"
+                      data-name="Icon material-email"
+                      d="M29.5,6H5.944a2.94,2.94,0,0,0-2.93,2.944L3,26.611a2.953,2.953,0,0,0,2.944,2.944H29.5a2.953,2.953,0,0,0,2.944-2.944V8.944A2.953,2.953,0,0,0,29.5,6Zm0,5.889L17.722,19.25,5.944,11.889V8.944l11.778,7.361L29.5,8.944Z"
+                      transform="translate(-3 -6)"
+                      fill="#810cfb"
+                    />
+                  </svg>
+
+                  <div class="space-y-2 -mt-2">
+                    <h5 class="text-xl font-semibold">EMAIL ADDRESSES</h5>
+                    <p class="text-lg font-semibold text-[#707070]">
+                      <a href="">Yourmail785@gmail.com</a>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-6">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="26.735"
+                    height="28.176"
+                    viewBox="0 0 26.735 28.176"
+                  >
+                    <g
+                      id="share-svgrepo-com_1_"
+                      data-name="share-svgrepo-com (1)"
+                      transform="translate(-1.481)"
+                    >
+                      <path
+                        id="Path_26896"
+                        data-name="Path 26896"
+                        d="M23.139,18.025A5.056,5.056,0,0,0,19.4,19.68L11.332,15.8a5,5,0,0,0,0-3.428L19.4,8.5a5.07,5.07,0,1,0-1.333-3.42,5.068,5.068,0,0,0,.068.788L9.546,9.992a5.076,5.076,0,1,0,0,8.192l8.584,4.128a5.128,5.128,0,0,0-.068.788,5.076,5.076,0,1,0,5.077-5.075Z"
+                        fill="#810cfb"
+                      />
+                    </g>
+                  </svg>
+
+                  <div class="space-y-2 -mt-2">
+                    <h5 class="text-xl font-semibold">SOCIAL PROFILES</h5>
+                    <div class="flex items-center space-x-8 pt-4">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                      >
+                        <g id="Facebook" transform="translate(0)">
+                          <path
+                            id="Combined_Shape"
+                            data-name="Combined Shape"
+                            d="M16,32A16,16,0,0,1,4.686,4.688,16,16,0,1,1,27.313,27.313,15.894,15.894,0,0,1,16,32ZM14.065,16.7v8.7h3.6V16.7h2.4l.319-3H17.668l0-1.5c0-.767.056-1.2,1.2-1.2h1.5V8h-2.4c-2.662,0-3.9,1.24-3.9,3.9v1.8h-1.8v3Z"
+                            transform="translate(0 0)"
+                            fill="#3b5998"
+                          />
+                        </g>
+                      </svg>
+
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                      >
+                        <g id="Twitter" transform="translate(0.201)">
+                          <path
+                            id="Combined_Shape"
+                            data-name="Combined Shape"
+                            d="M16,32A16,16,0,0,1,4.686,4.688,16,16,0,1,1,27.313,27.313,15.9,15.9,0,0,1,16,32ZM8.513,14.148c-.017,0-.028,0-.032.009a4.032,4.032,0,0,0,.4,1.515,3.62,3.62,0,0,0,1.533,1.445l.549.26-.65.012c-.4,0-.546,0-.591.064-.028.037-.015.1.009.185a3.383,3.383,0,0,0,2.093,1.853l.693.236-.6.363a6.353,6.353,0,0,1-3,.836,3.248,3.248,0,0,0-.919.09,8.485,8.485,0,0,0,2.161.994,9,9,0,0,0,2.664.391A9.328,9.328,0,0,0,17.5,21.175a9.781,9.781,0,0,0,3.727-4.386A11.685,11.685,0,0,0,21.99,13.4c0-.525.037-.593.661-1.209a7.473,7.473,0,0,0,.783-.871c.041-.078.065-.128.052-.15s-.017-.014-.036-.014a2.558,2.558,0,0,0-.486.143,3.171,3.171,0,0,1-.785.218c-.05,0-.08-.012-.09-.036-.024-.055.056-.178.258-.4a3.269,3.269,0,0,0,.761-1.209c0-.008-.01-.01-.018-.01a1.179,1.179,0,0,0-.339.134,6.357,6.357,0,0,1-.987.386l-.6.191-.549-.373a4.439,4.439,0,0,0-.952-.5,3.514,3.514,0,0,0-.893-.105,3.406,3.406,0,0,0-1.065.151A3.226,3.226,0,0,0,15.52,13l.035.554-.56-.068a9.122,9.122,0,0,1-5.326-2.62l-.739-.735-.19.543a3.27,3.27,0,0,0,.693,3.344c.2.215.286.34.263.395-.01.022-.037.033-.083.033a2.243,2.243,0,0,1-.6-.167A2.249,2.249,0,0,0,8.513,14.148Z"
+                            transform="translate(-0.201 0)"
+                            fill="#1da1f2"
+                          />
+                        </g>
+                      </svg>
+
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                      >
+                        <g id="Youtube" transform="translate(0.086)">
+                          <path
+                            id="Combined_Shape"
+                            data-name="Combined Shape"
+                            d="M16,32A16,16,0,0,1,4.687,4.688,16,16,0,1,1,27.314,27.313,15.891,15.891,0,0,1,16,32Zm0-21.865a49.977,49.977,0,0,0-6.669.365,2.162,2.162,0,0,0-1.507,1.549,23.553,23.553,0,0,0-.357,4.22,23.535,23.535,0,0,0,.357,4.218,2.16,2.16,0,0,0,1.507,1.548A49.578,49.578,0,0,0,16,22.4a49.549,49.549,0,0,0,6.667-.368,2.166,2.166,0,0,0,1.509-1.548,23.539,23.539,0,0,0,.357-4.218,23.557,23.557,0,0,0-.357-4.22A2.17,2.17,0,0,0,22.668,10.5,49.948,49.948,0,0,0,16,10.135Z"
+                            transform="translate(-0.086 0)"
+                            fill="#dd4b39"
+                          />
+                          <path
+                            id="Fill_2"
+                            data-name="Fill 2"
+                            d="M0,5.333V0L4.267,2.667Z"
+                            transform="translate(14.4 13.866)"
+                            fill="#dd4b39"
+                          />
+                        </g>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="
+        my-12
+        border-t border-[#707070]
+        pt-16
+        px-4
+        py-2
+        flex
+        justify-center
+        w-full
+      "
+    >
+      <div class="container">
+        <div
+          class="
+            grid grid-cols-1
+            md:grid-cols-2
+            xl:grid-cols-8
+            gap-12
+            items-start
+            text-white
+          "
+        >
+          <div class="xl:col-span-2 grid-cols-none">
+            <div class="flex items-center space-x-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="71"
+                height="71"
+                viewBox="0 0 71 71"
+              >
+                <defs>
+                  <pattern
+                    id="pattern"
+                    width="1"
+                    height="1"
+                    viewBox="13.986 13.292 43.028 43.028"
+                  >
+                    <image
+                      preserveAspectRatio="xMidYMid slice"
+                      width="71"
+                      height="71"
+                      xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCADIAMgDASIAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAQACAwQGBQf/xABCEAABAwMDAQYCBggEBQUAAAABAAIDBAUREiExQQYTIlFhgXGRFCMyQqHBFVJicrHR4fAWJDOSJTRDVFVjk6PC0v/EABoBAQADAQEBAAAAAAAAAAAAAAABAgMEBQb/xAAtEQACAgECAwUJAQEAAAAAAAAAAQIRAwQhEjFBEyJR0fAFMkJhcZGhseGB8f/aAAwDAQACEQMRAD8A8pATgEAE4LQqHCKSKECRSSQCSRSQASRSQgCCKSAagnIIBqBTkChI1BEoKAAoIoISNQTkEA1BOQQASSSQFkJwQCcFJAkQkiEIsSKSKCwI4SSQgSCKSACCKSACCKCABQRQUCxpQKcU1CRqCcU0oSBBFBABBEoIAJJJIC2E4JAJ2FJUCKOEcIQBJHCOEAMJJ2EsIBqSuW+2Vt1qRT0NM+eU8ho2aPMngD1Oy2tD2CoKFzBfK10lU4AihoxqdvxqONhnI6DycsM2ox4vfZeGOU+R56rkFmulU3VT26rmb5xwucOh6D1HzXtVtsD6Tu32yyUVvAILZKkmR/J5AOQd/wBd3K6D7ZdpGB0t9fG4YBENPGB67kF2Oeq8+XtVfCvX+eZ0R0r6s8O/wtfv/EVv/su88KpUWe50jdVRbquFvnJC5o4J6jyB+S9ufZasBxF8rtZ4OoZb7Lj1FuvzKlr4b+14bkBs1Kzg8guaAeiiPtKT5pfn+lnpPmeNoL0ivo7ll36VslNcWYy6ald4zxnAPjJOMbOWaqbLbq7xWaqIlOdVJUZD2ny3AI6Dgj9pdWPXQl7yr8ozlppLluZtAqaoppqWYxTxljx58H1B4I9QoSu1NNWjnaa2Y0oFOTSgsaUCnIFCRqRRQQAKSSSA6AaiGpwCeGoVI9KOlS6UdKgEWlLCl0I6EsEOF3+zvZia9OfUSvFPb4cmWdxwNsEgE7Zwc5Ow6+q7Odn33yuLXEx0kI1zy8YHkCds/kCei29PCO0oihjj7ns1SuAhgbkCpc051HrozwDzyd+OLVars+7Hn+v6b4cPG7fIktA+l0v0Ts9Tmgtjd3Vx/wBWoPBLM7j97nfbThbO0W2itdLhkYa4kF8khy55PUk9T5qhI+CgdHGyMPnftDAzbb8h/fnjoUwfI4SVR1vaCQ0Dws+C8DLNyds9FRSVIumu71jhTU75RnGT4R+K5U4ueovDqeHr4WEuA9cnC6hnjicMtJcD9hgyf6KCZ1VKcRQxxtI+1I8n8BjCyQWxxDT3Jzi03NvOwNK3hcaY36mzgUVWAcYwY3e2DhaaZlxZGTEaFzumtjx/9ly5X3JozLb4pWjcuglwfkeVrGRY536Y+jRBtyop6RxIGr/UjA8y4fyVe4Wm2XdrZXxxy5/0543DUMeTguo640lUGRHVFPx3E40PPsefZcKrss1NJJVWWT6PMfE+AjMcmPNvT2WkXv4MhnCuVqkpIHw3QGqocfV1bWfWRHoXgc/vfx4WSu1ontUjHO+spZd4Z27tePQ9V6PSdo4a0mjqoHU1W3wywv39x5hc26QR2mllhmYZbBUOJkYBl1G8/fb+zkDIXbg1E8cqf28vn+zHLiU0ecpqs11HJb6owSeJp3Y8bhw6EFV17UZKStHmyTi6Y1BOwgQrEDUE7CGEJGpI4SQHTapGhMaFK0KoHNanhiLQpmtUWTRFoT46d8srY42lz3ENa0cklShi0fZGmgbXz3KrJbTUMRlcQdwcE7b5yAHOHq1ZZcvZwc/AtGHE6Om63922k7L0Uow+PvrlKzGHNOPDnrqIx+6B+sVqJphaaCJ0MAcQQyCFu2s42Hw8/wCoUPZSjk+hPuNRHpq7g/vnjq0EeFufIDACsUZF0u8la5v+WgzDT5HJ+873/ovnsknJ7+mepCKSofQ0bqcmaWTvKyUfWy8Y64HkB/fRW6WqlrZ8wt0UzRp70k6nn9nyH9+ihr4TUTimidpjb4qgjqOjc+v99c9OnaGtaAMADbG2PRYyZYtU1MyPIjYAM5JHVWJGNLfs8cYQhOGkF2AoayZ8EbcMJy7fScEN6kevHzVDN22QyRsbIAWjVndp8vgqj4SHOcxu3OFXqoWSxiYxxsbj7Dhu34fglb6h81O5kjnOdGQNRH2h5n8VWMrNeFpFa50NNWwBlVE2QA7HG7duhWWqKirsdQ0VLnT20gNE7jmSHy1frD1WvrXEMOQdxn3XAq3Oki0PZqactIPBHkfRdEJdGRRxL5aW3WmE1PKI6yPxQTsP4HzBVKx3QXSjfS1UeJ4yY54XcevspqNz7RcXW2c5pZmuko3O30nqz18wuVdtNoukF4jyWOcIqoDjSdg4/ArqirXB9ijdblCutrhHPY3N1vhYam3SH7RjG74yeuOnoVlY3amrfdoHu7iKuha01VE8VEYHUD7TfgW5CyF9hgp73I+kOaOqaKiA/suGfzXo6LLfdfX9/wB8zk1MNr8CklhFLC9E4xuEMJ2EsIBuEk7CSgF9qmYoWqVigsWGKdgUEassCoyyJGtXfo2vNrprexp/4hOGvIHDdQ9P/TePg5cNo2WqsUYfe7LG4+FrJHbjghjHA/8AyFcOtlUEvWx06ePes210mNvs1Q+LLS2Pu2Bo3BOGjHqM59kqWOK1W1jCBpij1uA21EDJ9yc/NUO0U4MNvg8P11bHnfkDJP5Ka8Su/Rbo45S100rIw/GfvZwB7YXjUdh0Lax5p2OlAMkpL3nHJK6YbsBjpnKpRShn3QHYHXj2VyKY4wQPyKzYZMxuD4tk2rY6WHwPAe0hzS7jI8/mhqHh3ORtlcu/1hgoQ1skkb5CTmN+l2GjOx+Oke6oVrcr1QrJSyJsL9nHfUMe/n/RWKeIU8J3Bc4lziOMrJvuNbI0NZU1pB37wSv58ucdP6Lodn62SqttQ2WWWSWN+5kk1nB9fYooUrRs76l+rm3I88E4C41S4OaefbzV2qMgOQMj7RA8lzneIamgnO5Hl/ey0gQZ2+08lXb5AzaanP0iFw51t3/Ebe6qGRl3tDjkdxWRcfq5H5LuTMdqcGuAcDwRjCzFoxDb30rAcU08kXycSP4rtg7j9DN8x1mqg+0U7p8fSGjupNY6tJac+w/FZC4l7IIqcv1Mop5KaM430Z1N/ArS2x7DcrjTOADG1Jk2206gCVxO0Yb+kLlp0tbmF7Wj93H5Lswusv59fcwyK4FJu7QUsJQ7xhPwvVPOGYSwnYSwgG4STsJIC40KVgSaxSNaqWaEkYVqMKBgVhihkomHC09mcBfrA4ADMMozsPuRg/Hj+azLeFepq4077RMTgQVgje49GvyP/wArh1kW4qvWx06d02ehXBlPJNTPexrzC8SM6aXHb8/4qveZhHSwznhtVG4kO6ZI/Ncztc67x0bp7fUaY42t1xxxNdIdzkgn0xwqdIK6t7H1jKl1RJKS99O6fPeOaDlmfXbheSobKVnXfQ27HAgZI5wVbimLQBjO+2N1nLXcY6+2U1WzTpljDvQHqMeh2XIqe3zKK4VVPFR9+IJTFqFRpLnDGRjScb5HKz7OTdIk9CDm6sk5x8lme0dQH3GKneHFkcecjbBJyfwDSrFjvjrvTmY0xgLSBp7zXv8AHAWVuFzqqqsrHQSB2uYtHnpGwPHVox81RQd0Witw1M0kbmxMjIjLS44GcHYbZ+JCPZ6rP6QdG5rx38RAB51DBGfbUqjq6pdjQ97iDloaOMgfhzvt5dVAZhDUQ1ZeA9lRklp+5nBHyJ+S0jHai8jZa8AO3wOcjhc6d4bu04adhnPKivd0istJHI+jkm1y93pEujoT+qfLhYr/AB02pu0dDLb3U4fKGGT6SH4J2G2kZ6KcWGc1cUZyklzNNOQ5xLRiQ4yfVZi3HRFcXtZqD6+Zw34Gcc+y69bcPoFLPUyA6YWmQ+w491lKmrbauyMENTUSxTy+LVF9suJ1EfkfkuvDBtV40ZSdM7Rp209cXxxjVUDMj884GB+CznaCPFRdHNGQxlOzOOpyVasVXdK2QzVs8UtMxp7sjSX+mdO35rm3WqdJBWZb/wAxXAB3m2Ngbt7rpxQayU9/+mc5Jwsgpm/VBS6UadmIQpC1epZ59EOEMKUtTcIRQzCSfhJBR0QE4BNBTsqpoStUzCqzXKZjlBJaaUhE+qjqKBjgHTgFmTjxgjG/xDfxTGuTZi5gEjPtN326rLLDii0jTHLhlZ6FQVgudgZV5aA+Ih7n7NaR9onywQVzbd2hhqaptBRQyVLWPPe1DRiOPy3PO/8APdUbHXxUtaackuorj9bDqOdM2PGw/Hke4XUre6tjDWBgip425fpAAAG2Mfw9V4jik6aO9blKK4t7O1FbSyta2ncx9VSAjYncmP58fFefwTOmq3Pblzh4nHjUepPqVuQ+LtNa20tc+nhrJC6WCKM5fGPu5z1wdx1G/wAMjPap7VWiOcESjkk+F4zyP7/gtsdK75lWb7slVCk7NV1QHEGNxcCejtIwB7kLj084a9rXEx4xjOdwccnpuQlRylnZCQAn/MVRGnBHhDQenqAudT1bYXCEkh7WgAuw4+fPlzv8VhwW2zWLo7csjaeZr2Ybk9Ntuo/r6qrWVDSPCAYRxjzHTB+fqueJwaH62fdztnA9ON+hPyXMqKmnjk7uMOdKHaRuBk/q46b+W+3KtDFbJlLY0fba4CbsdQ1TxI2XvWZyeHaHAj59V5FLK4yulDsSBxLXAY3zutncat1R2Jmic12YK1pa3OQWuBwc/EuWRpKKqulRHS00erOTrxsB1JPRejpILHB34nHldvY3Ety/xEyhpIsd0WMnrMcADhh+Lh8gpPptHcboaQvY/uMh0bxjUfQHkKsZ7f2Zt7LbG9zpy3vJXNYXHf7zscDyCvSWy23CihLmNldpD2zNODv1BCwfCujS6eZdW/qMqIKa00lXNSwMiJZrwwYyegx8Tj3WTqGObUQUhcT9HZh2ejycu/ErR3muZFI1rS10NKO8kznD38NZ6+Z/os5Rh88755Tl73Fzj5krq0sW+8zHPJJUjqRtxGAkQnApFdhykRCaQnuKjJUkCSTcpIC6HI61XD0daElhr1OxypNfupmPUEovscnk5BCrMcpdSgsOoZaaKWShriWUs5BjmbzBID4Xj3JytXDIy9Uklnu7Sysi0l4YcCRvSRp6g/gsXUMbLGWkKSgu2HQUddK+KSF+aStY3LoSeQR95p8lwanTt9+Pr5+Z0Ysnws2Udvt9i7uSnibFyXu5yOpLjv6qs+7W68iOCSlqGxSktgnlZpy70PI/vKmZWx1kJoLmyOCedjmDB+rnBGC6N3rnjlVaSyT030SOqrRUQUZzAxrA30Grzx+S4FXOXM6vkivcrRcaKkaKRzaqCN7nBgIa4Zx04PA/lus+yY0kshqqaSMnbxNI6+o45Ws7Q1VbS0cM1DU93UOnZGyPSHCQu6HI6DJVyCeuZTsZVthleThzoTgHfyKlSqNsjqed11xM9M5uXHT9lrTz6nb4+S5kRnrJBGyCad5JJbE0ncjnPyW8N7oqm7VNvioWF8WprJcNIkc3AcAMdM+aVxu89opqeWEQnVM2OYEnwNPVbxm491R3KtXvZnYezt0nppm1rhTUj2s1Qs8TyG8Y6Dqr1DPa6QPobVFtFnvZ3NOjVwcu+8fgtFVyOgpSfDJI0DLR+ayENoudGxlEyogFG2XUyTSTI1pOSADt7qscnaJ8ToOPC9hSUFcbhNW0U0Q79gbI2oB8eNgRjj4KUSi1Wynt9NplqtOGahgDfd58mj+iuSTTOEsFI1s87cmQuIDImnq89APLlZK5V8XeywW+R8neDE9Q7YyfsjyatscZZXT9fUzk1BWRVtSJ3Mo4JDJTxOLi/GO9eeXFXKZgjYAqNLAGAEhXQ5enGKiqRxSk5Oy0HJFyhDk7VspIC4qFzk5xULigDqSUZKSkFgPS1quHpa0ILIep45FzxIpmSJRJ1I3qYPXPjlUwl2VaLE7nqpUMbK0ghOdIoXSIB1LdKq3MdTysFXRO5gkPHTLT0PqtRbb/ABzRNFFVic/9lXSBkgPk2Tg9OVkyQ7YqCSjZJuOVz5dLCe/JmsM0o8z0SWspJJYv0jSz08kT9TBNES0HzDhkH45U0tZTvhfJSVUTyeNDw/B46HpsvO6a5Xm2xmOkr5mxH/pOOpn+07J83aGtmjcypoaGfUCC50OD8dts7+S45aKd7G61ETvwdno4ailqYZJRPC7LnkZ1g5yMdMq1WRUk1I+GvqIg0416nBhdg5G/ssgLxA0tIsNCNP7/APNMbfZ4i001tt8DgPtNh1E/7iR+Cs9NlbtjtYI1tHUWqigljt0EkmfE7uWuI+JcdsfDK49yvkLnHv5DGwcQUz8vcfV3T2XBqq651401FVI5n6jfC35DZQR0eOVtj0dPim9zOWo2qKHz3CoqofosDfo9JnPcx/e9XHqUoKYMGSp2RNZwE9dkYqKpHPKTlzENkQU1JWKEgcjqUeUcoBxKY4pZQKEjCkgUkBFrQL1FqTdSsCcPUjJFU1J4egOgyVSiZc4SJ/eKtAuOl9VGZFWMiHeJQLjZFK2RUGvUrZEoF7XlNIaegVcSI94ooWSFjPJRlrB0QL1GXqaA8kDgJpcoy9N1KQS5RyotSOpQCTKWVHqR1IB+UcpmUcoB2UChlIlAApIZSQHP1IZTcoZViR+UQUzKOUBKHI6lFlLKAl1IalHlHKAmDk8PVcFODkILIej3ir6ktSgFjWml6i1JakIHlyGpRkoZUkkupHUocpwKgEocjqUQKOUBLqR1KLUlqQE2pLUotSGpQCXUkotSSApZSykkrFhIpJIApZSSQgWUcpJIBwRykkgFlLKSSEByllJJADKGUkkJFlOBSSQByjlJJCBZSykkoAtSWUkkAspJJID/2Q=="
+                    />
+                  </pattern>
+                </defs>
+                <circle
+                  id="Ellipse_277"
+                  data-name="Ellipse 277"
+                  cx="35.5"
+                  cy="35.5"
+                  r="35.5"
+                  fill="url(#pattern)"
+                />
+              </svg>
+              <h1 class="text-4xl text-white font-semibold">PivotalCoin</h1>
+            </div>
+            <div class="py-8">
+              <p class="leading-loose text-lg">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                pretium pretium tempor. Ut eget imperdiet neque. In volutpat
+                ante semper diam molestie, et aliquam erat laoreet.
+              </p>
+            </div>
+
+            <div class="flex items-center space-x-8">
+              <div class="">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                >
+                  <g id="Facebook" transform="translate(0)">
+                    <path
+                      id="Combined_Shape"
+                      data-name="Combined Shape"
+                      d="M16,32A16,16,0,0,1,4.686,4.688,16,16,0,1,1,27.313,27.313,15.894,15.894,0,0,1,16,32ZM14.065,16.7v8.7h3.6V16.7h2.4l.319-3H17.668l0-1.5c0-.767.056-1.2,1.2-1.2h1.5V8h-2.4c-2.662,0-3.9,1.24-3.9,3.9v1.8h-1.8v3Z"
+                      transform="translate(0 0)"
+                      fill="#fff"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div class="">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                >
+                  <g id="Twitter" transform="translate(0.201)">
+                    <path
+                      id="Combined_Shape"
+                      data-name="Combined Shape"
+                      d="M16,32A16,16,0,0,1,4.686,4.688,16,16,0,1,1,27.313,27.313,15.9,15.9,0,0,1,16,32ZM8.513,14.148c-.017,0-.028,0-.032.009a4.032,4.032,0,0,0,.4,1.515,3.62,3.62,0,0,0,1.533,1.445l.549.26-.65.012c-.4,0-.546,0-.591.064-.028.037-.015.1.009.185a3.383,3.383,0,0,0,2.093,1.853l.693.236-.6.363a6.353,6.353,0,0,1-3,.836,3.248,3.248,0,0,0-.919.09,8.485,8.485,0,0,0,2.161.994,9,9,0,0,0,2.664.391A9.328,9.328,0,0,0,17.5,21.175a9.781,9.781,0,0,0,3.727-4.386A11.685,11.685,0,0,0,21.99,13.4c0-.525.037-.593.661-1.209a7.473,7.473,0,0,0,.783-.871c.041-.078.065-.128.052-.15s-.017-.014-.036-.014a2.558,2.558,0,0,0-.486.143,3.171,3.171,0,0,1-.785.218c-.05,0-.08-.012-.09-.036-.024-.055.056-.178.258-.4a3.269,3.269,0,0,0,.761-1.209c0-.008-.01-.01-.018-.01a1.179,1.179,0,0,0-.339.134,6.357,6.357,0,0,1-.987.386l-.6.191-.549-.373a4.439,4.439,0,0,0-.952-.5,3.514,3.514,0,0,0-.893-.105,3.406,3.406,0,0,0-1.065.151A3.226,3.226,0,0,0,15.52,13l.035.554-.56-.068a9.122,9.122,0,0,1-5.326-2.62l-.739-.735-.19.543a3.27,3.27,0,0,0,.693,3.344c.2.215.286.34.263.395-.01.022-.037.033-.083.033a2.243,2.243,0,0,1-.6-.167A2.249,2.249,0,0,0,8.513,14.148Z"
+                      transform="translate(-0.201 0)"
+                      fill="#fff"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div class="">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                >
+                  <g id="Youtube" transform="translate(0.086)">
+                    <path
+                      id="Combined_Shape"
+                      data-name="Combined Shape"
+                      d="M16,32A16,16,0,0,1,4.687,4.688,16,16,0,1,1,27.314,27.313,15.891,15.891,0,0,1,16,32Zm0-21.865a49.977,49.977,0,0,0-6.669.365,2.162,2.162,0,0,0-1.507,1.549,23.553,23.553,0,0,0-.357,4.22,23.535,23.535,0,0,0,.357,4.218,2.16,2.16,0,0,0,1.507,1.548A49.578,49.578,0,0,0,16,22.4a49.549,49.549,0,0,0,6.667-.368,2.166,2.166,0,0,0,1.509-1.548,23.539,23.539,0,0,0,.357-4.218,23.557,23.557,0,0,0-.357-4.22A2.17,2.17,0,0,0,22.668,10.5,49.948,49.948,0,0,0,16,10.135Z"
+                      transform="translate(-0.086 0)"
+                      fill="#fff"
+                    />
+                    <path
+                      id="Fill_2"
+                      data-name="Fill 2"
+                      d="M0,5.333V0L4.267,2.667Z"
+                      transform="translate(14.4 13.866)"
+                      fill="#fff"
+                    />
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <h4 class="text-3xl font-semibold pb-4">Company</h4>
+            <ul class="space-y-4 text-xl">
+              <li><a href="">About us</a></li>
+              <li><a href="">Store</a></li>
+              <li><a href="">Whitepaper</a></li>
+            </ul>
+          </div>
+          <div class="">
+            <h4 class="text-3xl font-semibold pb-4">Support</h4>
+            <ul class="space-y-4 text-xl">
+              <li><a href="">Contact us</a></li>
+              <li><a href="">Privacy Policy</a></li>
+              <li><a href="">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="xl:col-span-2 grid-cols-none">
+            <h4 class="text-3xl font-semibold pb-4">Pages</h4>
+            <ul class="space-y-4 text-xl">
+              <li><a href="">Our Steps ahead</a></li>
+              <li><a href="">Current Challenges</a></li>
+              <li><a href="">Digital Energy Consumption</a></li>
+              <li><a href="">Global Electricity Market</a></li>
+              <li><a href="">Price Distortions</a></li>
+              <li><a href="">Pivotalcoin Context</a></li>
+              <li><a href="">Environmental</a></li>
+            </ul>
+          </div>
+          <div class="xl:col-span-2 col-span-full">
+            <h4 class="text-3xl font-semibold pb-4 text-white">
+              Let's Stay in Touch
+            </h4>
+            <p class="text-lg">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit.
+            </p>
+            <div class="relative my-6">
+              <input
+                type="email"
+                class="
+                  w-full
+                  rounded-3xl
+                  text-xl
+                  pl-16
+                  pr-4
+                  py-4
+                  text-black
+                  focus:outline-none
+                "
+                placeholder="Email Address"
+              />
+              <div class="absolute top-4 left-6">
+                <svg
+                  id="Group_235"
+                  data-name="Group 235"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 15.174 11.108"
+                >
+                  <path
+                    id="Path_908"
+                    data-name="Path 908"
+                    d="M18.28,17.058H6.895A1.9,1.9,0,0,0,5,18.953v7.319a1.9,1.9,0,0,0,1.895,1.895H18.279a1.9,1.9,0,0,0,1.895-1.895V18.953A1.9,1.9,0,0,0,18.28,17.058Zm-11.385.537H18.279a1.357,1.357,0,0,1,1.145.631L13.585,23.74a1.473,1.473,0,0,1-2,0L5.75,18.225A1.357,1.357,0,0,1,6.895,17.595ZM5.55,26.45a1.381,1.381,0,0,1-.013-.178V18.953a1.354,1.354,0,0,1,.013-.178l4.063,3.838Zm12.73,1.18H6.895A1.357,1.357,0,0,1,5.75,27L10,22.981l1.217,1.149a2.015,2.015,0,0,0,2.733,0l1.216-1.149L19.424,27A1.356,1.356,0,0,1,18.28,27.629Zm1.358-8.677v7.319a1.379,1.379,0,0,1-.013.178l-4.063-3.838,4.064-3.837A1.409,1.409,0,0,1,19.637,18.953Z"
+                    transform="translate(-5 -17.058)"
+                    fill="#8d8d8d"
+                  />
+                </svg>
+              </div>
+
+              <div class="absolute -top-8 -right-10">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="145"
+                  height="145"
+                  viewBox="0 0 121 121"
+                >
+                  <defs>
+                    <filter
+                      id="Rectangle_12"
+                      x="0"
+                      y="0"
+                      width="121"
+                      height="121"
+                      filterUnits="userSpaceOnUse"
+                    >
+                      <feOffset dx="5" dy="10" input="SourceAlpha" />
+                      <feGaussianBlur stdDeviation="15" result="blur" />
+                      <feFlood flood-color="#810cfb" flood-opacity="0.4" />
+                      <feComposite operator="in" in2="blur" />
+                      <feComposite in="SourceGraphic" />
+                    </filter>
+                  </defs>
+                  <g
+                    id="Group_238"
+                    data-name="Group 238"
+                    transform="translate(40 35)"
+                  >
+                    <g
+                      transform="matrix(1, 0, 0, 1, -40, -35)"
+                      filter="url(#Rectangle_12)"
+                    >
+                      <rect
+                        id="Rectangle_12-2"
+                        data-name="Rectangle 12"
+                        width="31"
+                        height="31"
+                        rx="15.5"
+                        transform="translate(40 35)"
+                        fill="#810cfb"
+                      />
+                    </g>
+                    <g
+                      id="Group_236"
+                      data-name="Group 236"
+                      transform="translate(8.178 10.21)"
+                    >
+                      <path
+                        id="Path_909"
+                        data-name="Path 909"
+                        d="M6.116,9.755,4.349,10.933a.344.344,0,0,1-.511-.275V8.066l7.227-5.42-8.641,4.6L.185,5.709A.468.468,0,0,1,.3,4.884L14.836-.379c.2-.079.354.157.236.354L8.512,10.815a.484.484,0,0,1-.668.118Z"
+                        transform="translate(0.012 0.395)"
+                        fill="#fff"
+                        fill-rule="evenodd"
+                      />
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center text-white text-xl font-semibold pt-20">
+          Copyright &copy; 2020 All Rights Reserved
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
